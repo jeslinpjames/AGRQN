@@ -1,0 +1,10 @@
+# torch/torchvision are installed separately (CUDA build required) -- see
+# scripts/setup_env.sh or the README for the exact command.
+numpy>=1.24,<2.0
+opencv-python-headless>=4.8,<5.0
+pillow>=10.0,<11.0
+pandas>=2.0,<3.0
+matplotlib>=3.7,<4.0
+scipy>=1.10,<2.0
+tqdm>=4.65,<5.0
+tabulate>=0.9,<0.10

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# virtual environments
+venv/
+.venv/
+
+# model weights / checkpoints
+*.pth
+*.pt
+
+# feature caches
+feat_cache*/
+
+# archives
+*.tar.gz
+*.zip
+
+# data (downloaded separately, see README)
+data/
+VOC2012_train_val/
+
+# run artifacts not tracked by default
+logs/
+paper_assets/
+report/
