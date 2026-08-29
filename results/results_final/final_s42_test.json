@@ -1,0 +1,2503 @@
+{
+  "config": "duel_wide",
+  "tag": "final_s42",
+  "cfg": {
+    "eta": 3.0,
+    "gamma": 0.9,
+    "shaping": "sign",
+    "expiry": "pass",
+    "step_penalty": 0.0,
+    "feat": "7x7",
+    "hidden": 1024,
+    "dueling": true,
+    "aux_iou": false,
+    "stop_mode": "argmax",
+    "aux_tau": 0.5,
+    "track": "accuracy",
+    "prior": "dino",
+    "history": true,
+    "double_q": true,
+    "desc": "vgg"
+  },
+  "seed": 42,
+  "history": [
+    {
+      "miou": 0.45221612635003716,
+      "acc05": 0.415,
+      "mean_steps": 19.645,
+      "median_steps": 20.0,
+      "trigger_rate": 0.02,
+      "exhaust_rate": 0.98,
+      "trigger_ppv": 1.0,
+      "exhaust_ppv": 0.4030612244897959,
+      "per_class": {
+        "bicycle": 0.4119996028484957,
+        "aeroplane": 0.4511611945592649,
+        "horse": 0.45857627759919267,
+        "cat": 0.5191934357614234,
+        "dog": 0.42015012098180887
+      },
+      "exh_minus_failrate": 0.395,
+      "epoch": 1,
+      "eps": 0.80203
+    },
+    {
+      "miou": 0.45044419829888904,
+      "acc05": 0.435,
+      "mean_steps": 18.835,
+      "median_steps": 20.0,
+      "trigger_rate": 0.085,
+      "exhaust_rate": 0.915,
+      "trigger_ppv": 1.0,
+      "exhaust_ppv": 0.3825136612021858,
+      "per_class": {
+        "bicycle": 0.41137446256598204,
+        "aeroplane": 0.4937680467006813,
+        "horse": 0.41773801570521235,
+        "cat": 0.5105805300462781,
+        "dog": 0.4187599364762912
+      },
+      "exh_minus_failrate": 0.3500000000000001,
+      "epoch": 2,
+      "eps": 0.5693349999999999
+    },
+    {
+      "miou": 0.4487577463924198,
+      "acc05": 0.43,
+      "mean_steps": 18.045,
+      "median_steps": 20.0,
+      "trigger_rate": 0.125,
+      "exhaust_rate": 0.875,
+      "trigger_ppv": 0.84,
+      "exhaust_ppv": 0.37142857142857144,
+      "per_class": {
+        "bicycle": 0.41500847513020905,
+        "aeroplane": 0.423986477909735,
+        "horse": 0.462286021516565,
+        "cat": 0.516895719394586,
+        "dog": 0.42561203801100367
+      },
+      "exh_minus_failrate": 0.30499999999999994,
+      "epoch": 3,
+      "eps": 0.29881
+    },
+    {
+      "miou": 0.46204679973125595,
+      "acc05": 0.46,
+      "mean_steps": 16.14,
+      "median_steps": 20.0,
+      "trigger_rate": 0.26,
+      "exhaust_rate": 0.74,
+      "trigger_ppv": 0.8846153846153846,
+      "exhaust_ppv": 0.3108108108108108,
+      "per_class": {
+        "bicycle": 0.4074944666691227,
+        "aeroplane": 0.5078982329430589,
+        "horse": 0.4548207232163451,
+        "cat": 0.5423630217075964,
+        "dog": 0.3976575541201568
+      },
+      "exh_minus_failrate": 0.19999999999999996,
+      "epoch": 4,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.4898795080412657,
+      "acc05": 0.515,
+      "mean_steps": 15.11,
+      "median_steps": 20.0,
+      "trigger_rate": 0.31,
+      "exhaust_rate": 0.69,
+      "trigger_ppv": 0.8548387096774194,
+      "exhaust_ppv": 0.36231884057971014,
+      "per_class": {
+        "bicycle": 0.42608380339579693,
+        "aeroplane": 0.5504856086415328,
+        "horse": 0.5151099901082138,
+        "cat": 0.5434965823156224,
+        "dog": 0.41422155574516284
+      },
+      "exh_minus_failrate": 0.20499999999999996,
+      "epoch": 5,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.49681283028482026,
+      "acc05": 0.515,
+      "mean_steps": 14.455,
+      "median_steps": 20.0,
+      "trigger_rate": 0.385,
+      "exhaust_rate": 0.615,
+      "trigger_ppv": 0.8051948051948052,
+      "exhaust_ppv": 0.3333333333333333,
+      "per_class": {
+        "bicycle": 0.43819140564417564,
+        "aeroplane": 0.5043979502763296,
+        "horse": 0.5334489006373196,
+        "cat": 0.577137071392642,
+        "dog": 0.43088882347363466
+      },
+      "exh_minus_failrate": 0.13,
+      "epoch": 6,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5103770097431732,
+      "acc05": 0.56,
+      "mean_steps": 12.965,
+      "median_steps": 20.0,
+      "trigger_rate": 0.495,
+      "exhaust_rate": 0.505,
+      "trigger_ppv": 0.797979797979798,
+      "exhaust_ppv": 0.32673267326732675,
+      "per_class": {
+        "bicycle": 0.4328920289002256,
+        "aeroplane": 0.5873198485245703,
+        "horse": 0.5049626916825491,
+        "cat": 0.5616031667841336,
+        "dog": 0.4651073128243873
+      },
+      "exh_minus_failrate": 0.06500000000000006,
+      "epoch": 7,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5185025690740002,
+      "acc05": 0.565,
+      "mean_steps": 13.455,
+      "median_steps": 20.0,
+      "trigger_rate": 0.435,
+      "exhaust_rate": 0.565,
+      "trigger_ppv": 0.8275862068965517,
+      "exhaust_ppv": 0.36283185840707965,
+      "per_class": {
+        "bicycle": 0.4672153256558461,
+        "aeroplane": 0.5722078607851614,
+        "horse": 0.5225910474855707,
+        "cat": 0.5860114070875018,
+        "dog": 0.44448720435592115
+      },
+      "exh_minus_failrate": 0.1299999999999999,
+      "epoch": 8,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5222090605286142,
+      "acc05": 0.58,
+      "mean_steps": 12.345,
+      "median_steps": 20.0,
+      "trigger_rate": 0.505,
+      "exhaust_rate": 0.495,
+      "trigger_ppv": 0.8415841584158416,
+      "exhaust_ppv": 0.31313131313131315,
+      "per_class": {
+        "bicycle": 0.44233387996223056,
+        "aeroplane": 0.580447725216356,
+        "horse": 0.5282770648387966,
+        "cat": 0.587975185163525,
+        "dog": 0.4720114474621628
+      },
+      "exh_minus_failrate": 0.07499999999999996,
+      "epoch": 9,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5345731229035229,
+      "acc05": 0.63,
+      "mean_steps": 12.32,
+      "median_steps": 19.0,
+      "trigger_rate": 0.505,
+      "exhaust_rate": 0.495,
+      "trigger_ppv": 0.8712871287128713,
+      "exhaust_ppv": 0.3838383838383838,
+      "per_class": {
+        "bicycle": 0.4672016443693658,
+        "aeroplane": 0.5860852593994386,
+        "horse": 0.5538577665495604,
+        "cat": 0.6000621653397676,
+        "dog": 0.4656587788594823
+      },
+      "exh_minus_failrate": 0.125,
+      "epoch": 10,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5272324477319641,
+      "acc05": 0.575,
+      "mean_steps": 12.15,
+      "median_steps": 16.5,
+      "trigger_rate": 0.51,
+      "exhaust_rate": 0.49,
+      "trigger_ppv": 0.803921568627451,
+      "exhaust_ppv": 0.336734693877551,
+      "per_class": {
+        "bicycle": 0.46008185236686516,
+        "aeroplane": 0.5837294467938838,
+        "horse": 0.5382171925503646,
+        "cat": 0.5854798064737905,
+        "dog": 0.46865394047491626
+      },
+      "exh_minus_failrate": 0.06499999999999995,
+      "epoch": 11,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5377309403305407,
+      "acc05": 0.575,
+      "mean_steps": 11.685,
+      "median_steps": 11.5,
+      "trigger_rate": 0.57,
+      "exhaust_rate": 0.43,
+      "trigger_ppv": 0.7807017543859649,
+      "exhaust_ppv": 0.3023255813953488,
+      "per_class": {
+        "bicycle": 0.47223250434903363,
+        "aeroplane": 0.5946876358342161,
+        "horse": 0.5534454893818829,
+        "cat": 0.6019146456623536,
+        "dog": 0.4663744264252173
+      },
+      "exh_minus_failrate": 0.004999999999999949,
+      "epoch": 12,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5323956044622334,
+      "acc05": 0.595,
+      "mean_steps": 11.895,
+      "median_steps": 13.0,
+      "trigger_rate": 0.555,
+      "exhaust_rate": 0.445,
+      "trigger_ppv": 0.8108108108108109,
+      "exhaust_ppv": 0.3258426966292135,
+      "per_class": {
+        "bicycle": 0.47871957902384843,
+        "aeroplane": 0.591142718948847,
+        "horse": 0.5987040255151286,
+        "cat": 0.5511272990629656,
+        "dog": 0.44228439976037703
+      },
+      "exh_minus_failrate": 0.03999999999999998,
+      "epoch": 13,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5510318835528576,
+      "acc05": 0.605,
+      "mean_steps": 12.375,
+      "median_steps": 19.0,
+      "trigger_rate": 0.515,
+      "exhaust_rate": 0.485,
+      "trigger_ppv": 0.8155339805825242,
+      "exhaust_ppv": 0.38144329896907214,
+      "per_class": {
+        "bicycle": 0.4741907655392009,
+        "aeroplane": 0.6270328268222969,
+        "horse": 0.583329878346376,
+        "cat": 0.6025651901406818,
+        "dog": 0.46804075691573266
+      },
+      "exh_minus_failrate": 0.08999999999999997,
+      "epoch": 14,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5360274590592273,
+      "acc05": 0.6,
+      "mean_steps": 10.95,
+      "median_steps": 9.5,
+      "trigger_rate": 0.645,
+      "exhaust_rate": 0.355,
+      "trigger_ppv": 0.7674418604651163,
+      "exhaust_ppv": 0.29577464788732394,
+      "per_class": {
+        "bicycle": 0.45995341506311194,
+        "aeroplane": 0.6279963480627707,
+        "horse": 0.5483402000926837,
+        "cat": 0.5879390957302943,
+        "dog": 0.45590823634727584
+      },
+      "exh_minus_failrate": -0.04500000000000004,
+      "epoch": 15,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5463988297500777,
+      "acc05": 0.605,
+      "mean_steps": 10.935,
+      "median_steps": 10.0,
+      "trigger_rate": 0.63,
+      "exhaust_rate": 0.37,
+      "trigger_ppv": 0.7857142857142857,
+      "exhaust_ppv": 0.2972972972972973,
+      "per_class": {
+        "bicycle": 0.4478128472966052,
+        "aeroplane": 0.628338253676661,
+        "horse": 0.5904231149184791,
+        "cat": 0.5969308157171799,
+        "dog": 0.46848911714146374
+      },
+      "exh_minus_failrate": -0.025000000000000022,
+      "epoch": 16,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.554453256374781,
+      "acc05": 0.605,
+      "mean_steps": 11.235,
+      "median_steps": 10.0,
+      "trigger_rate": 0.605,
+      "exhaust_rate": 0.395,
+      "trigger_ppv": 0.8099173553719008,
+      "exhaust_ppv": 0.2911392405063291,
+      "per_class": {
+        "bicycle": 0.4776139560489656,
+        "aeroplane": 0.6338885765139638,
+        "horse": 0.5843794974075874,
+        "cat": 0.599230231122965,
+        "dog": 0.47715402078042324
+      },
+      "exh_minus_failrate": 0.0,
+      "epoch": 17,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5552500833710997,
+      "acc05": 0.655,
+      "mean_steps": 10.98,
+      "median_steps": 9.5,
+      "trigger_rate": 0.65,
+      "exhaust_rate": 0.35,
+      "trigger_ppv": 0.7923076923076923,
+      "exhaust_ppv": 0.4,
+      "per_class": {
+        "bicycle": 0.4971862392525749,
+        "aeroplane": 0.6159280293430041,
+        "horse": 0.5911170388609921,
+        "cat": 0.6192965171785267,
+        "dog": 0.4527225922204007
+      },
+      "exh_minus_failrate": 0.0050000000000000044,
+      "epoch": 18,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5308082808433664,
+      "acc05": 0.585,
+      "mean_steps": 11.07,
+      "median_steps": 8.5,
+      "trigger_rate": 0.63,
+      "exhaust_rate": 0.37,
+      "trigger_ppv": 0.7777777777777778,
+      "exhaust_ppv": 0.25675675675675674,
+      "per_class": {
+        "bicycle": 0.44566472888198616,
+        "aeroplane": 0.5916176039673047,
+        "horse": 0.5604208557477554,
+        "cat": 0.576845139320809,
+        "dog": 0.47949307629897675
+      },
+      "exh_minus_failrate": -0.04500000000000004,
+      "epoch": 19,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5543596968428859,
+      "acc05": 0.63,
+      "mean_steps": 10.84,
+      "median_steps": 9.0,
+      "trigger_rate": 0.65,
+      "exhaust_rate": 0.35,
+      "trigger_ppv": 0.7923076923076923,
+      "exhaust_ppv": 0.32857142857142857,
+      "per_class": {
+        "bicycle": 0.4752217878862576,
+        "aeroplane": 0.6281607478727157,
+        "horse": 0.5559939670166749,
+        "cat": 0.6148368706139614,
+        "dog": 0.4975851108248198
+      },
+      "exh_minus_failrate": -0.020000000000000018,
+      "epoch": 20,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5568121161675859,
+      "acc05": 0.64,
+      "mean_steps": 10.505,
+      "median_steps": 7.0,
+      "trigger_rate": 0.655,
+      "exhaust_rate": 0.345,
+      "trigger_ppv": 0.8015267175572519,
+      "exhaust_ppv": 0.3333333333333333,
+      "per_class": {
+        "bicycle": 0.4840108857115748,
+        "aeroplane": 0.6222958031144079,
+        "horse": 0.5739310942840108,
+        "cat": 0.6180833789279813,
+        "dog": 0.48573941879995425
+      },
+      "exh_minus_failrate": -0.015000000000000013,
+      "epoch": 21,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5478994211847696,
+      "acc05": 0.615,
+      "mean_steps": 10.835,
+      "median_steps": 8.5,
+      "trigger_rate": 0.63,
+      "exhaust_rate": 0.37,
+      "trigger_ppv": 0.753968253968254,
+      "exhaust_ppv": 0.3783783783783784,
+      "per_class": {
+        "bicycle": 0.46985298630591305,
+        "aeroplane": 0.5948261963818247,
+        "horse": 0.5526080691577395,
+        "cat": 0.6301444846169536,
+        "dog": 0.4920653694614173
+      },
+      "exh_minus_failrate": -0.015000000000000013,
+      "epoch": 22,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5527123098994224,
+      "acc05": 0.64,
+      "mean_steps": 10.195,
+      "median_steps": 7.0,
+      "trigger_rate": 0.66,
+      "exhaust_rate": 0.34,
+      "trigger_ppv": 0.8257575757575758,
+      "exhaust_ppv": 0.27941176470588236,
+      "per_class": {
+        "bicycle": 0.5018691836616873,
+        "aeroplane": 0.6053526599864959,
+        "horse": 0.5714059408157837,
+        "cat": 0.6130531961356757,
+        "dog": 0.47188056889746977
+      },
+      "exh_minus_failrate": -0.019999999999999962,
+      "epoch": 23,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5443863756934939,
+      "acc05": 0.62,
+      "mean_steps": 11.255,
+      "median_steps": 8.5,
+      "trigger_rate": 0.585,
+      "exhaust_rate": 0.415,
+      "trigger_ppv": 0.811965811965812,
+      "exhaust_ppv": 0.3493975903614458,
+      "per_class": {
+        "bicycle": 0.4661275664356598,
+        "aeroplane": 0.5927723073062374,
+        "horse": 0.5675395529479724,
+        "cat": 0.595663880265611,
+        "dog": 0.49982857151198895
+      },
+      "exh_minus_failrate": 0.034999999999999976,
+      "epoch": 24,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5412656631732458,
+      "acc05": 0.62,
+      "mean_steps": 9.945,
+      "median_steps": 7.5,
+      "trigger_rate": 0.665,
+      "exhaust_rate": 0.335,
+      "trigger_ppv": 0.7593984962406015,
+      "exhaust_ppv": 0.34328358208955223,
+      "per_class": {
+        "bicycle": 0.4475009967336671,
+        "aeroplane": 0.6033896171179769,
+        "horse": 0.5763489130977136,
+        "cat": 0.5977005145192802,
+        "dog": 0.48138827439759097
+      },
+      "exh_minus_failrate": -0.044999999999999984,
+      "epoch": 25,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5540616723490314,
+      "acc05": 0.62,
+      "mean_steps": 10.195,
+      "median_steps": 8.0,
+      "trigger_rate": 0.695,
+      "exhaust_rate": 0.305,
+      "trigger_ppv": 0.7841726618705036,
+      "exhaust_ppv": 0.2459016393442623,
+      "per_class": {
+        "bicycle": 0.4711186053286934,
+        "aeroplane": 0.631097131077478,
+        "horse": 0.5672511931129846,
+        "cat": 0.6051845947167861,
+        "dog": 0.4956568375092151
+      },
+      "exh_minus_failrate": -0.07500000000000001,
+      "epoch": 26,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5415153194110092,
+      "acc05": 0.615,
+      "mean_steps": 10.185,
+      "median_steps": 7.0,
+      "trigger_rate": 0.665,
+      "exhaust_rate": 0.335,
+      "trigger_ppv": 0.7819548872180451,
+      "exhaust_ppv": 0.2835820895522388,
+      "per_class": {
+        "bicycle": 0.4847281757231158,
+        "aeroplane": 0.5756475810601509,
+        "horse": 0.5554234119433582,
+        "cat": 0.601843184212431,
+        "dog": 0.48993424411598935
+      },
+      "exh_minus_failrate": -0.04999999999999999,
+      "epoch": 27,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5286280681895482,
+      "acc05": 0.59,
+      "mean_steps": 10.35,
+      "median_steps": 7.5,
+      "trigger_rate": 0.675,
+      "exhaust_rate": 0.325,
+      "trigger_ppv": 0.7555555555555555,
+      "exhaust_ppv": 0.24615384615384617,
+      "per_class": {
+        "bicycle": 0.43794220496912395,
+        "aeroplane": 0.5549634286976538,
+        "horse": 0.5701127606880299,
+        "cat": 0.6192186413727712,
+        "dog": 0.46090330522016193
+      },
+      "exh_minus_failrate": -0.08500000000000002,
+      "epoch": 28,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5490404093305852,
+      "acc05": 0.675,
+      "mean_steps": 10.115,
+      "median_steps": 7.0,
+      "trigger_rate": 0.725,
+      "exhaust_rate": 0.275,
+      "trigger_ppv": 0.7931034482758621,
+      "exhaust_ppv": 0.36363636363636365,
+      "per_class": {
+        "bicycle": 0.470426782050382,
+        "aeroplane": 0.5838559142794505,
+        "horse": 0.5650432153636755,
+        "cat": 0.6370661984286525,
+        "dog": 0.4888099365307654
+      },
+      "exh_minus_failrate": -0.04999999999999993,
+      "epoch": 29,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5520760554306546,
+      "acc05": 0.665,
+      "mean_steps": 10.19,
+      "median_steps": 8.0,
+      "trigger_rate": 0.685,
+      "exhaust_rate": 0.315,
+      "trigger_ppv": 0.7956204379562044,
+      "exhaust_ppv": 0.38095238095238093,
+      "per_class": {
+        "bicycle": 0.4626176367481721,
+        "aeroplane": 0.6118976992476053,
+        "horse": 0.569861962237594,
+        "cat": 0.6228921022376008,
+        "dog": 0.493110876682301
+      },
+      "exh_minus_failrate": -0.019999999999999962,
+      "epoch": 30,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5452500373547848,
+      "acc05": 0.63,
+      "mean_steps": 9.845,
+      "median_steps": 7.0,
+      "trigger_rate": 0.715,
+      "exhaust_rate": 0.285,
+      "trigger_ppv": 0.7832167832167832,
+      "exhaust_ppv": 0.24561403508771928,
+      "per_class": {
+        "bicycle": 0.4441720224328073,
+        "aeroplane": 0.604838491003399,
+        "horse": 0.5845139958385801,
+        "cat": 0.6042625612939855,
+        "dog": 0.48846311620515215
+      },
+      "exh_minus_failrate": -0.08500000000000002,
+      "epoch": 31,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.553601958505643,
+      "acc05": 0.63,
+      "mean_steps": 9.7,
+      "median_steps": 6.5,
+      "trigger_rate": 0.695,
+      "exhaust_rate": 0.305,
+      "trigger_ppv": 0.7985611510791367,
+      "exhaust_ppv": 0.2459016393442623,
+      "per_class": {
+        "bicycle": 0.4685421658531193,
+        "aeroplane": 0.5830731924645768,
+        "horse": 0.5923643528715475,
+        "cat": 0.626097932700281,
+        "dog": 0.49793214863869
+      },
+      "exh_minus_failrate": -0.065,
+      "epoch": 32,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5500983623262905,
+      "acc05": 0.62,
+      "mean_steps": 10.025,
+      "median_steps": 6.0,
+      "trigger_rate": 0.685,
+      "exhaust_rate": 0.315,
+      "trigger_ppv": 0.8029197080291971,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.4704871741171762,
+        "aeroplane": 0.5993940292076514,
+        "horse": 0.5680212633955242,
+        "cat": 0.6239629713419401,
+        "dog": 0.4886263735691605
+      },
+      "exh_minus_failrate": -0.065,
+      "epoch": 33,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5515238745897418,
+      "acc05": 0.64,
+      "mean_steps": 9.7,
+      "median_steps": 6.0,
+      "trigger_rate": 0.685,
+      "exhaust_rate": 0.315,
+      "trigger_ppv": 0.8029197080291971,
+      "exhaust_ppv": 0.2857142857142857,
+      "per_class": {
+        "bicycle": 0.4473155783061655,
+        "aeroplane": 0.615555939434086,
+        "horse": 0.5786953120893523,
+        "cat": 0.611126938807628,
+        "dog": 0.5049256043114774
+      },
+      "exh_minus_failrate": -0.044999999999999984,
+      "epoch": 34,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5599706323756111,
+      "acc05": 0.65,
+      "mean_steps": 10.23,
+      "median_steps": 7.0,
+      "trigger_rate": 0.69,
+      "exhaust_rate": 0.31,
+      "trigger_ppv": 0.7753623188405797,
+      "exhaust_ppv": 0.3709677419354839,
+      "per_class": {
+        "bicycle": 0.4620738907063894,
+        "aeroplane": 0.6255134578766723,
+        "horse": 0.5829060651170909,
+        "cat": 0.6413331807746087,
+        "dog": 0.4880265674032945
+      },
+      "exh_minus_failrate": -0.03999999999999998,
+      "epoch": 35,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.540469522183619,
+      "acc05": 0.6,
+      "mean_steps": 9.915,
+      "median_steps": 7.0,
+      "trigger_rate": 0.705,
+      "exhaust_rate": 0.295,
+      "trigger_ppv": 0.723404255319149,
+      "exhaust_ppv": 0.3050847457627119,
+      "per_class": {
+        "bicycle": 0.46613512372879223,
+        "aeroplane": 0.6191499245405799,
+        "horse": 0.5518479390532666,
+        "cat": 0.5860537034657302,
+        "dog": 0.4791609201297261
+      },
+      "exh_minus_failrate": -0.10500000000000004,
+      "epoch": 36,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5345157983449995,
+      "acc05": 0.625,
+      "mean_steps": 9.425,
+      "median_steps": 6.0,
+      "trigger_rate": 0.705,
+      "exhaust_rate": 0.295,
+      "trigger_ppv": 0.7659574468085106,
+      "exhaust_ppv": 0.288135593220339,
+      "per_class": {
+        "bicycle": 0.43178068866920755,
+        "aeroplane": 0.6047405806494306,
+        "horse": 0.5732616130855439,
+        "cat": 0.5847530819490215,
+        "dog": 0.4780430273717943
+      },
+      "exh_minus_failrate": -0.08000000000000002,
+      "epoch": 37,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5483204108922733,
+      "acc05": 0.605,
+      "mean_steps": 9.715,
+      "median_steps": 7.0,
+      "trigger_rate": 0.7,
+      "exhaust_rate": 0.3,
+      "trigger_ppv": 0.75,
+      "exhaust_ppv": 0.26666666666666666,
+      "per_class": {
+        "bicycle": 0.4369194531265331,
+        "aeroplane": 0.6037262968536401,
+        "horse": 0.5970238127364415,
+        "cat": 0.5996373689694613,
+        "dog": 0.5042951227752912
+      },
+      "exh_minus_failrate": -0.09500000000000003,
+      "epoch": 38,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5365091320491244,
+      "acc05": 0.59,
+      "mean_steps": 10.68,
+      "median_steps": 8.0,
+      "trigger_rate": 0.64,
+      "exhaust_rate": 0.36,
+      "trigger_ppv": 0.7578125,
+      "exhaust_ppv": 0.2916666666666667,
+      "per_class": {
+        "bicycle": 0.4594732580992277,
+        "aeroplane": 0.5858439242676925,
+        "horse": 0.5528813268005308,
+        "cat": 0.5960272808417282,
+        "dog": 0.48831987023644274
+      },
+      "exh_minus_failrate": -0.050000000000000044,
+      "epoch": 39,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5390793324619919,
+      "acc05": 0.58,
+      "mean_steps": 10.5,
+      "median_steps": 7.0,
+      "trigger_rate": 0.655,
+      "exhaust_rate": 0.345,
+      "trigger_ppv": 0.7709923664122137,
+      "exhaust_ppv": 0.21739130434782608,
+      "per_class": {
+        "bicycle": 0.43700301027085703,
+        "aeroplane": 0.5900551220463088,
+        "horse": 0.5641596073441898,
+        "cat": 0.5932126786896529,
+        "dog": 0.5109662439589508
+      },
+      "exh_minus_failrate": -0.07500000000000007,
+      "epoch": 40,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5507721253914099,
+      "acc05": 0.645,
+      "mean_steps": 9.445,
+      "median_steps": 6.0,
+      "trigger_rate": 0.735,
+      "exhaust_rate": 0.265,
+      "trigger_ppv": 0.782312925170068,
+      "exhaust_ppv": 0.2641509433962264,
+      "per_class": {
+        "bicycle": 0.44406186024490485,
+        "aeroplane": 0.6137261048831165,
+        "horse": 0.5993561841366793,
+        "cat": 0.604463502977845,
+        "dog": 0.4922529747145033
+      },
+      "exh_minus_failrate": -0.08999999999999997,
+      "epoch": 41,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5519243833400092,
+      "acc05": 0.63,
+      "mean_steps": 9.51,
+      "median_steps": 5.0,
+      "trigger_rate": 0.71,
+      "exhaust_rate": 0.29,
+      "trigger_ppv": 0.7676056338028169,
+      "exhaust_ppv": 0.29310344827586204,
+      "per_class": {
+        "bicycle": 0.4438529787794875,
+        "aeroplane": 0.626021494683923,
+        "horse": 0.5895174243987227,
+        "cat": 0.6079961988038226,
+        "dog": 0.4922338200340903
+      },
+      "exh_minus_failrate": -0.08000000000000002,
+      "epoch": 42,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5552284520353771,
+      "acc05": 0.65,
+      "mean_steps": 9.52,
+      "median_steps": 6.0,
+      "trigger_rate": 0.715,
+      "exhaust_rate": 0.285,
+      "trigger_ppv": 0.7692307692307693,
+      "exhaust_ppv": 0.3508771929824561,
+      "per_class": {
+        "bicycle": 0.43660515685715284,
+        "aeroplane": 0.6286878890722379,
+        "horse": 0.6056288379176078,
+        "cat": 0.6044518957416456,
+        "dog": 0.5007684805882412
+      },
+      "exh_minus_failrate": -0.065,
+      "epoch": 43,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.548734987645354,
+      "acc05": 0.615,
+      "mean_steps": 9.605,
+      "median_steps": 6.0,
+      "trigger_rate": 0.725,
+      "exhaust_rate": 0.275,
+      "trigger_ppv": 0.7517241379310344,
+      "exhaust_ppv": 0.2545454545454545,
+      "per_class": {
+        "bicycle": 0.4657853875050225,
+        "aeroplane": 0.5781251982531875,
+        "horse": 0.5617563030655968,
+        "cat": 0.6259385710460799,
+        "dog": 0.5120694783568832
+      },
+      "exh_minus_failrate": -0.10999999999999999,
+      "epoch": 44,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5490567299846939,
+      "acc05": 0.63,
+      "mean_steps": 9.265,
+      "median_steps": 5.0,
+      "trigger_rate": 0.735,
+      "exhaust_rate": 0.265,
+      "trigger_ppv": 0.7619047619047619,
+      "exhaust_ppv": 0.2641509433962264,
+      "per_class": {
+        "bicycle": 0.454144362678797,
+        "aeroplane": 0.5974767374407477,
+        "horse": 0.5803180368069335,
+        "cat": 0.633672608878517,
+        "dog": 0.4796719041184739
+      },
+      "exh_minus_failrate": -0.10499999999999998,
+      "epoch": 45,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5595383558420132,
+      "acc05": 0.63,
+      "mean_steps": 9.275,
+      "median_steps": 6.0,
+      "trigger_rate": 0.76,
+      "exhaust_rate": 0.24,
+      "trigger_ppv": 0.7368421052631579,
+      "exhaust_ppv": 0.2916666666666667,
+      "per_class": {
+        "bicycle": 0.4685781070402764,
+        "aeroplane": 0.6400967848944557,
+        "horse": 0.5704705808594259,
+        "cat": 0.6329385725982748,
+        "dog": 0.4856077338176331
+      },
+      "exh_minus_failrate": -0.13,
+      "epoch": 46,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5521213270398035,
+      "acc05": 0.61,
+      "mean_steps": 8.845,
+      "median_steps": 5.0,
+      "trigger_rate": 0.745,
+      "exhaust_rate": 0.255,
+      "trigger_ppv": 0.7181208053691275,
+      "exhaust_ppv": 0.29411764705882354,
+      "per_class": {
+        "bicycle": 0.46184658621718483,
+        "aeroplane": 0.6205034684928736,
+        "horse": 0.5868469560571941,
+        "cat": 0.6309191917773298,
+        "dog": 0.4604904326544359
+      },
+      "exh_minus_failrate": -0.135,
+      "epoch": 47,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.555391855422992,
+      "acc05": 0.635,
+      "mean_steps": 8.585,
+      "median_steps": 5.0,
+      "trigger_rate": 0.785,
+      "exhaust_rate": 0.215,
+      "trigger_ppv": 0.7452229299363057,
+      "exhaust_ppv": 0.23255813953488372,
+      "per_class": {
+        "bicycle": 0.43131166550377403,
+        "aeroplane": 0.6292419140380431,
+        "horse": 0.5969219976871525,
+        "cat": 0.6242476240969367,
+        "dog": 0.49523607578905376
+      },
+      "exh_minus_failrate": -0.15,
+      "epoch": 48,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5577352814159493,
+      "acc05": 0.65,
+      "mean_steps": 8.48,
+      "median_steps": 5.0,
+      "trigger_rate": 0.795,
+      "exhaust_rate": 0.205,
+      "trigger_ppv": 0.7547169811320755,
+      "exhaust_ppv": 0.24390243902439024,
+      "per_class": {
+        "bicycle": 0.43283979331145506,
+        "aeroplane": 0.6085184543358931,
+        "horse": 0.5886700127325059,
+        "cat": 0.6450446374137876,
+        "dog": 0.513603509286105
+      },
+      "exh_minus_failrate": -0.145,
+      "epoch": 49,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5594515607799525,
+      "acc05": 0.66,
+      "mean_steps": 8.56,
+      "median_steps": 6.0,
+      "trigger_rate": 0.79,
+      "exhaust_rate": 0.21,
+      "trigger_ppv": 0.759493670886076,
+      "exhaust_ppv": 0.2857142857142857,
+      "per_class": {
+        "bicycle": 0.46769134451915767,
+        "aeroplane": 0.6196118482166442,
+        "horse": 0.5658452999305266,
+        "cat": 0.6464288698294622,
+        "dog": 0.49768044140397166
+      },
+      "exh_minus_failrate": -0.12999999999999998,
+      "epoch": 50,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5646337102522921,
+      "acc05": 0.66,
+      "mean_steps": 8.55,
+      "median_steps": 5.0,
+      "trigger_rate": 0.78,
+      "exhaust_rate": 0.22,
+      "trigger_ppv": 0.7628205128205128,
+      "exhaust_ppv": 0.29545454545454547,
+      "per_class": {
+        "bicycle": 0.4494361175961494,
+        "aeroplane": 0.6223351622468699,
+        "horse": 0.5819636044663309,
+        "cat": 0.6547535014433746,
+        "dog": 0.5146801655087359
+      },
+      "exh_minus_failrate": -0.11999999999999997,
+      "epoch": 51,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5666899330324489,
+      "acc05": 0.675,
+      "mean_steps": 8.14,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7791411042944786,
+      "exhaust_ppv": 0.21621621621621623,
+      "per_class": {
+        "bicycle": 0.4459126514708556,
+        "aeroplane": 0.6474527346200871,
+        "horse": 0.5824742464646755,
+        "cat": 0.643010597832106,
+        "dog": 0.5145994347745197
+      },
+      "exh_minus_failrate": -0.13999999999999996,
+      "epoch": 52,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5643166507987795,
+      "acc05": 0.665,
+      "mean_steps": 8.27,
+      "median_steps": 5.0,
+      "trigger_rate": 0.805,
+      "exhaust_rate": 0.195,
+      "trigger_ppv": 0.7763975155279503,
+      "exhaust_ppv": 0.20512820512820512,
+      "per_class": {
+        "bicycle": 0.44794886220491215,
+        "aeroplane": 0.6420570008216231,
+        "horse": 0.5843327975699673,
+        "cat": 0.6493622411942891,
+        "dog": 0.49788235220310606
+      },
+      "exh_minus_failrate": -0.13999999999999996,
+      "epoch": 53,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5756939631051151,
+      "acc05": 0.69,
+      "mean_steps": 8.18,
+      "median_steps": 5.0,
+      "trigger_rate": 0.81,
+      "exhaust_rate": 0.19,
+      "trigger_ppv": 0.7777777777777778,
+      "exhaust_ppv": 0.3157894736842105,
+      "per_class": {
+        "bicycle": 0.45556108190477695,
+        "aeroplane": 0.6533904589139679,
+        "horse": 0.5800917591107053,
+        "cat": 0.6721492644451629,
+        "dog": 0.5172772511509627
+      },
+      "exh_minus_failrate": -0.12000000000000005,
+      "epoch": 54,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5716447858005946,
+      "acc05": 0.665,
+      "mean_steps": 8.07,
+      "median_steps": 5.0,
+      "trigger_rate": 0.81,
+      "exhaust_rate": 0.19,
+      "trigger_ppv": 0.7716049382716049,
+      "exhaust_ppv": 0.21052631578947367,
+      "per_class": {
+        "bicycle": 0.4574703644556715,
+        "aeroplane": 0.6635057881293465,
+        "horse": 0.5546521775749589,
+        "cat": 0.6602153352004689,
+        "dog": 0.5223802636425272
+      },
+      "exh_minus_failrate": -0.14499999999999996,
+      "epoch": 55,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5724539043406948,
+      "acc05": 0.675,
+      "mean_steps": 7.94,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7730061349693251,
+      "exhaust_ppv": 0.24324324324324326,
+      "per_class": {
+        "bicycle": 0.4571914185109467,
+        "aeroplane": 0.6515668221168878,
+        "horse": 0.5643061021101323,
+        "cat": 0.6627174059525037,
+        "dog": 0.5264877730130035
+      },
+      "exh_minus_failrate": -0.13999999999999996,
+      "epoch": 56,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5664773395241643,
+      "acc05": 0.655,
+      "mean_steps": 7.9,
+      "median_steps": 5.0,
+      "trigger_rate": 0.835,
+      "exhaust_rate": 0.165,
+      "trigger_ppv": 0.7485029940119761,
+      "exhaust_ppv": 0.18181818181818182,
+      "per_class": {
+        "bicycle": 0.46085279412235247,
+        "aeroplane": 0.6130495227934241,
+        "horse": 0.5798673750579081,
+        "cat": 0.6509886800306901,
+        "dog": 0.5276283256164472
+      },
+      "exh_minus_failrate": -0.17999999999999997,
+      "epoch": 57,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5705866989632263,
+      "acc05": 0.64,
+      "mean_steps": 8.25,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.725609756097561,
+      "exhaust_ppv": 0.25,
+      "per_class": {
+        "bicycle": 0.45466515155005915,
+        "aeroplane": 0.6376364040178817,
+        "horse": 0.5956803029082636,
+        "cat": 0.6441131225391044,
+        "dog": 0.5208385138008232
+      },
+      "exh_minus_failrate": -0.18,
+      "epoch": 58,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5738554760010389,
+      "acc05": 0.665,
+      "mean_steps": 8.445,
+      "median_steps": 6.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7730061349693251,
+      "exhaust_ppv": 0.1891891891891892,
+      "per_class": {
+        "bicycle": 0.44211379949881857,
+        "aeroplane": 0.643941263265405,
+        "horse": 0.5955863887741994,
+        "cat": 0.6508805909458635,
+        "dog": 0.5367553375209086
+      },
+      "exh_minus_failrate": -0.14999999999999997,
+      "epoch": 59,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5642176200699639,
+      "acc05": 0.655,
+      "mean_steps": 8.575,
+      "median_steps": 6.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.75,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.44305082719250855,
+        "aeroplane": 0.6265084274593329,
+        "horse": 0.5977613507820131,
+        "cat": 0.6448773710310266,
+        "dog": 0.5088901238849387
+      },
+      "exh_minus_failrate": -0.16499999999999998,
+      "epoch": 60,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5679975602098393,
+      "acc05": 0.67,
+      "mean_steps": 8.355,
+      "median_steps": 6.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7575757575757576,
+      "exhaust_ppv": 0.2571428571428571,
+      "per_class": {
+        "bicycle": 0.44212056693987306,
+        "aeroplane": 0.6256144764797911,
+        "horse": 0.5857591928142364,
+        "cat": 0.6637494205800262,
+        "dog": 0.5227441442352697
+      },
+      "exh_minus_failrate": -0.15499999999999997,
+      "epoch": 61,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5678211535842015,
+      "acc05": 0.69,
+      "mean_steps": 7.985,
+      "median_steps": 5.0,
+      "trigger_rate": 0.835,
+      "exhaust_rate": 0.165,
+      "trigger_ppv": 0.7544910179640718,
+      "exhaust_ppv": 0.36363636363636365,
+      "per_class": {
+        "bicycle": 0.4486925335234684,
+        "aeroplane": 0.6245990643311801,
+        "horse": 0.6035562677888782,
+        "cat": 0.6341283026581801,
+        "dog": 0.5281295996193007
+      },
+      "exh_minus_failrate": -0.14500000000000005,
+      "epoch": 62,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5685080884874268,
+      "acc05": 0.69,
+      "mean_steps": 7.66,
+      "median_steps": 5.0,
+      "trigger_rate": 0.855,
+      "exhaust_rate": 0.145,
+      "trigger_ppv": 0.7543859649122807,
+      "exhaust_ppv": 0.3103448275862069,
+      "per_class": {
+        "bicycle": 0.4552199896734882,
+        "aeroplane": 0.6239080795418933,
+        "horse": 0.6165031768939184,
+        "cat": 0.6402601039233426,
+        "dog": 0.5066490924044916
+      },
+      "exh_minus_failrate": -0.16500000000000006,
+      "epoch": 63,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.559243148717197,
+      "acc05": 0.655,
+      "mean_steps": 8.005,
+      "median_steps": 5.0,
+      "trigger_rate": 0.855,
+      "exhaust_rate": 0.145,
+      "trigger_ppv": 0.7251461988304093,
+      "exhaust_ppv": 0.2413793103448276,
+      "per_class": {
+        "bicycle": 0.42855566426923863,
+        "aeroplane": 0.619355972177666,
+        "horse": 0.6025446017952768,
+        "cat": 0.6467499456024737,
+        "dog": 0.4990095597413303
+      },
+      "exh_minus_failrate": -0.19999999999999998,
+      "epoch": 64,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5691028795779708,
+      "acc05": 0.67,
+      "mean_steps": 7.97,
+      "median_steps": 5.0,
+      "trigger_rate": 0.855,
+      "exhaust_rate": 0.145,
+      "trigger_ppv": 0.7309941520467836,
+      "exhaust_ppv": 0.3103448275862069,
+      "per_class": {
+        "bicycle": 0.4398876664889153,
+        "aeroplane": 0.6157591197153561,
+        "horse": 0.6310909968160783,
+        "cat": 0.6545675562625382,
+        "dog": 0.5042090586069664
+      },
+      "exh_minus_failrate": -0.18499999999999997,
+      "epoch": 65,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5676752254517767,
+      "acc05": 0.67,
+      "mean_steps": 8.04,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.75,
+      "exhaust_ppv": 0.3055555555555556,
+      "per_class": {
+        "bicycle": 0.4391757148961486,
+        "aeroplane": 0.6261669360748602,
+        "horse": 0.607188233102206,
+        "cat": 0.659079233155387,
+        "dog": 0.5067660100302817
+      },
+      "exh_minus_failrate": -0.14999999999999997,
+      "epoch": 66,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5725658726049156,
+      "acc05": 0.67,
+      "mean_steps": 7.935,
+      "median_steps": 5.0,
+      "trigger_rate": 0.83,
+      "exhaust_rate": 0.17,
+      "trigger_ppv": 0.7710843373493976,
+      "exhaust_ppv": 0.17647058823529413,
+      "per_class": {
+        "bicycle": 0.46542884972170284,
+        "aeroplane": 0.6260529263378857,
+        "horse": 0.619762736818094,
+        "cat": 0.6589102194638176,
+        "dog": 0.49267463068307793
+      },
+      "exh_minus_failrate": -0.15999999999999995,
+      "epoch": 67,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5737298473422199,
+      "acc05": 0.685,
+      "mean_steps": 7.565,
+      "median_steps": 5.0,
+      "trigger_rate": 0.86,
+      "exhaust_rate": 0.14,
+      "trigger_ppv": 0.7732558139534884,
+      "exhaust_ppv": 0.14285714285714285,
+      "per_class": {
+        "bicycle": 0.4651805310556475,
+        "aeroplane": 0.6239771048392113,
+        "horse": 0.6176533253003835,
+        "cat": 0.6542687667822303,
+        "dog": 0.5075695087336269
+      },
+      "exh_minus_failrate": -0.17499999999999993,
+      "epoch": 68,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5778593105769,
+      "acc05": 0.695,
+      "mean_steps": 7.5,
+      "median_steps": 5.0,
+      "trigger_rate": 0.865,
+      "exhaust_rate": 0.135,
+      "trigger_ppv": 0.7630057803468208,
+      "exhaust_ppv": 0.25925925925925924,
+      "per_class": {
+        "bicycle": 0.4634574410376679,
+        "aeroplane": 0.6385222963463357,
+        "horse": 0.6157304036023832,
+        "cat": 0.6561111482189286,
+        "dog": 0.5154752636791845
+      },
+      "exh_minus_failrate": -0.17000000000000004,
+      "epoch": 69,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5712187178489584,
+      "acc05": 0.685,
+      "mean_steps": 7.595,
+      "median_steps": 5.0,
+      "trigger_rate": 0.86,
+      "exhaust_rate": 0.14,
+      "trigger_ppv": 0.75,
+      "exhaust_ppv": 0.2857142857142857,
+      "per_class": {
+        "bicycle": 0.4619996823302969,
+        "aeroplane": 0.6324023297021484,
+        "horse": 0.6021153867743859,
+        "cat": 0.6566481071306945,
+        "dog": 0.502928083307266
+      },
+      "exh_minus_failrate": -0.17499999999999993,
+      "epoch": 70,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5723860748781278,
+      "acc05": 0.695,
+      "mean_steps": 7.79,
+      "median_steps": 5.0,
+      "trigger_rate": 0.845,
+      "exhaust_rate": 0.155,
+      "trigger_ppv": 0.7692307692307693,
+      "exhaust_ppv": 0.2903225806451613,
+      "per_class": {
+        "bicycle": 0.44647198986925263,
+        "aeroplane": 0.62874170107395,
+        "horse": 0.6015980405404524,
+        "cat": 0.6646066739592416,
+        "dog": 0.5205119689477424
+      },
+      "exh_minus_failrate": -0.15000000000000005,
+      "epoch": 71,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5686047297039654,
+      "acc05": 0.685,
+      "mean_steps": 7.94,
+      "median_steps": 5.5,
+      "trigger_rate": 0.865,
+      "exhaust_rate": 0.135,
+      "trigger_ppv": 0.7572254335260116,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.4309171125109101,
+        "aeroplane": 0.6422950674173122,
+        "horse": 0.5962596646904389,
+        "cat": 0.6635484707537312,
+        "dog": 0.5100033331474343
+      },
+      "exh_minus_failrate": -0.17999999999999994,
+      "epoch": 72,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5614678942226328,
+      "acc05": 0.66,
+      "mean_steps": 7.895,
+      "median_steps": 5.5,
+      "trigger_rate": 0.85,
+      "exhaust_rate": 0.15,
+      "trigger_ppv": 0.7470588235294118,
+      "exhaust_ppv": 0.16666666666666666,
+      "per_class": {
+        "bicycle": 0.4184737337734156,
+        "aeroplane": 0.6467514753914888,
+        "horse": 0.5846135050716865,
+        "cat": 0.6526765467811246,
+        "dog": 0.5048242100954482
+      },
+      "exh_minus_failrate": -0.18999999999999997,
+      "epoch": 73,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5695189327593916,
+      "acc05": 0.665,
+      "mean_steps": 8.04,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7621951219512195,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.44694133949084947,
+        "aeroplane": 0.6393222048222309,
+        "horse": 0.6035080578966296,
+        "cat": 0.6585366038278279,
+        "dog": 0.49928645775941993
+      },
+      "exh_minus_failrate": -0.15499999999999997,
+      "epoch": 74,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5669131268030762,
+      "acc05": 0.665,
+      "mean_steps": 8.15,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.754601226993865,
+      "exhaust_ppv": 0.2702702702702703,
+      "per_class": {
+        "bicycle": 0.4521111912033076,
+        "aeroplane": 0.6350261214385478,
+        "horse": 0.6004117965895397,
+        "cat": 0.6540227833021058,
+        "dog": 0.4929937414818795
+      },
+      "exh_minus_failrate": -0.14999999999999997,
+      "epoch": 75,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5690211121202948,
+      "acc05": 0.66,
+      "mean_steps": 7.99,
+      "median_steps": 5.0,
+      "trigger_rate": 0.835,
+      "exhaust_rate": 0.165,
+      "trigger_ppv": 0.7305389221556886,
+      "exhaust_ppv": 0.30303030303030304,
+      "per_class": {
+        "bicycle": 0.44648564303795135,
+        "aeroplane": 0.6368147288584062,
+        "horse": 0.6000092799442053,
+        "cat": 0.6514911930528455,
+        "dog": 0.5103047157080656
+      },
+      "exh_minus_failrate": -0.17499999999999996,
+      "epoch": 76,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5694813406889698,
+      "acc05": 0.655,
+      "mean_steps": 7.88,
+      "median_steps": 5.0,
+      "trigger_rate": 0.84,
+      "exhaust_rate": 0.16,
+      "trigger_ppv": 0.7321428571428571,
+      "exhaust_ppv": 0.25,
+      "per_class": {
+        "bicycle": 0.45027864885338387,
+        "aeroplane": 0.6408525404382426,
+        "horse": 0.6109050420715985,
+        "cat": 0.6488615653267289,
+        "dog": 0.4965089067548957
+      },
+      "exh_minus_failrate": -0.18499999999999997,
+      "epoch": 77,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5718065562976805,
+      "acc05": 0.655,
+      "mean_steps": 7.81,
+      "median_steps": 5.0,
+      "trigger_rate": 0.85,
+      "exhaust_rate": 0.15,
+      "trigger_ppv": 0.7352941176470589,
+      "exhaust_ppv": 0.2,
+      "per_class": {
+        "bicycle": 0.44500573216463285,
+        "aeroplane": 0.6365894399892857,
+        "horse": 0.6159743220777479,
+        "cat": 0.6574879118571149,
+        "dog": 0.5039753753996211
+      },
+      "exh_minus_failrate": -0.19499999999999998,
+      "epoch": 78,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5676426639484794,
+      "acc05": 0.66,
+      "mean_steps": 7.9,
+      "median_steps": 5.0,
+      "trigger_rate": 0.83,
+      "exhaust_rate": 0.17,
+      "trigger_ppv": 0.7590361445783133,
+      "exhaust_ppv": 0.17647058823529413,
+      "per_class": {
+        "bicycle": 0.43805836057561526,
+        "aeroplane": 0.620314999295848,
+        "horse": 0.6092619643426691,
+        "cat": 0.6600275746977602,
+        "dog": 0.5105504208305044
+      },
+      "exh_minus_failrate": -0.16999999999999996,
+      "epoch": 79,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5669456141237517,
+      "acc05": 0.67,
+      "mean_steps": 7.875,
+      "median_steps": 5.0,
+      "trigger_rate": 0.835,
+      "exhaust_rate": 0.165,
+      "trigger_ppv": 0.7544910179640718,
+      "exhaust_ppv": 0.24242424242424243,
+      "per_class": {
+        "bicycle": 0.4350923979695052,
+        "aeroplane": 0.6177169490717531,
+        "horse": 0.6035862351515977,
+        "cat": 0.6600275746977602,
+        "dog": 0.5183049137281417
+      },
+      "exh_minus_failrate": -0.16499999999999995,
+      "epoch": 80,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5647680724531103,
+      "acc05": 0.675,
+      "mean_steps": 7.9,
+      "median_steps": 5.0,
+      "trigger_rate": 0.845,
+      "exhaust_rate": 0.155,
+      "trigger_ppv": 0.7514792899408284,
+      "exhaust_ppv": 0.25806451612903225,
+      "per_class": {
+        "bicycle": 0.4371737896367903,
+        "aeroplane": 0.6247039581051139,
+        "horse": 0.5980231107175935,
+        "cat": 0.654864260195505,
+        "dog": 0.509075243610549
+      },
+      "exh_minus_failrate": -0.16999999999999996,
+      "epoch": 81,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5662062765062137,
+      "acc05": 0.675,
+      "mean_steps": 7.895,
+      "median_steps": 5.0,
+      "trigger_rate": 0.845,
+      "exhaust_rate": 0.155,
+      "trigger_ppv": 0.7396449704142012,
+      "exhaust_ppv": 0.3225806451612903,
+      "per_class": {
+        "bicycle": 0.43858968867056447,
+        "aeroplane": 0.6232150495760921,
+        "horse": 0.6045185914390229,
+        "cat": 0.6520169693275667,
+        "dog": 0.5126910835178224
+      },
+      "exh_minus_failrate": -0.16999999999999996,
+      "epoch": 82,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5659817135142273,
+      "acc05": 0.665,
+      "mean_steps": 7.85,
+      "median_steps": 5.0,
+      "trigger_rate": 0.845,
+      "exhaust_rate": 0.155,
+      "trigger_ppv": 0.7455621301775148,
+      "exhaust_ppv": 0.22580645161290322,
+      "per_class": {
+        "bicycle": 0.4443074149132011,
+        "aeroplane": 0.6239998706280355,
+        "horse": 0.6100697674350207,
+        "cat": 0.6486830148236731,
+        "dog": 0.5028484997712062
+      },
+      "exh_minus_failrate": -0.17999999999999997,
+      "epoch": 83,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5702436468804326,
+      "acc05": 0.67,
+      "mean_steps": 7.88,
+      "median_steps": 5.0,
+      "trigger_rate": 0.845,
+      "exhaust_rate": 0.155,
+      "trigger_ppv": 0.7455621301775148,
+      "exhaust_ppv": 0.25806451612903225,
+      "per_class": {
+        "bicycle": 0.447751642978136,
+        "aeroplane": 0.6307907832276157,
+        "horse": 0.6108705042006801,
+        "cat": 0.651326978305368,
+        "dog": 0.5104783256903633
+      },
+      "exh_minus_failrate": -0.17499999999999996,
+      "epoch": 84,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5715014598503062,
+      "acc05": 0.67,
+      "mean_steps": 7.87,
+      "median_steps": 5.0,
+      "trigger_rate": 0.85,
+      "exhaust_rate": 0.15,
+      "trigger_ppv": 0.7411764705882353,
+      "exhaust_ppv": 0.26666666666666666,
+      "per_class": {
+        "bicycle": 0.447751642978136,
+        "aeroplane": 0.6358795477541401,
+        "horse": 0.6035042346254416,
+        "cat": 0.655364551977287,
+        "dog": 0.5150073219165262
+      },
+      "exh_minus_failrate": -0.17999999999999997,
+      "epoch": 85,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5735633951517176,
+      "acc05": 0.675,
+      "mean_steps": 7.835,
+      "median_steps": 5.0,
+      "trigger_rate": 0.85,
+      "exhaust_rate": 0.15,
+      "trigger_ppv": 0.7470588235294118,
+      "exhaust_ppv": 0.26666666666666666,
+      "per_class": {
+        "bicycle": 0.45435302676866585,
+        "aeroplane": 0.6377950823003294,
+        "horse": 0.600726205815065,
+        "cat": 0.6619169700553987,
+        "dog": 0.5130256908191286
+      },
+      "exh_minus_failrate": -0.17499999999999996,
+      "epoch": 86,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5728788084047884,
+      "acc05": 0.675,
+      "mean_steps": 7.835,
+      "median_steps": 5.0,
+      "trigger_rate": 0.85,
+      "exhaust_rate": 0.15,
+      "trigger_ppv": 0.7411764705882353,
+      "exhaust_ppv": 0.3,
+      "per_class": {
+        "bicycle": 0.4485713037572154,
+        "aeroplane": 0.6420788698276239,
+        "horse": 0.6071737085787952,
+        "cat": 0.6575764355767918,
+        "dog": 0.5089937242835163
+      },
+      "exh_minus_failrate": -0.17499999999999996,
+      "epoch": 87,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5723570702985288,
+      "acc05": 0.675,
+      "mean_steps": 7.875,
+      "median_steps": 5.0,
+      "trigger_rate": 0.84,
+      "exhaust_rate": 0.16,
+      "trigger_ppv": 0.75,
+      "exhaust_ppv": 0.28125,
+      "per_class": {
+        "bicycle": 0.4523887430256964,
+        "aeroplane": 0.6357238562774883,
+        "horse": 0.6049081427033223,
+        "cat": 0.6621500323635632,
+        "dog": 0.5066145771225736
+      },
+      "exh_minus_failrate": -0.16499999999999995,
+      "epoch": 88,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5717327012490147,
+      "acc05": 0.68,
+      "mean_steps": 8.055,
+      "median_steps": 5.0,
+      "trigger_rate": 0.83,
+      "exhaust_rate": 0.17,
+      "trigger_ppv": 0.7530120481927711,
+      "exhaust_ppv": 0.3235294117647059,
+      "per_class": {
+        "bicycle": 0.4544815013482797,
+        "aeroplane": 0.6245290019210454,
+        "horse": 0.6132232477785038,
+        "cat": 0.659253460533036,
+        "dog": 0.5071762946642083
+      },
+      "exh_minus_failrate": -0.14999999999999994,
+      "epoch": 89,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.572200006594777,
+      "acc05": 0.675,
+      "mean_steps": 8.035,
+      "median_steps": 5.0,
+      "trigger_rate": 0.835,
+      "exhaust_rate": 0.165,
+      "trigger_ppv": 0.7544910179640718,
+      "exhaust_ppv": 0.2727272727272727,
+      "per_class": {
+        "bicycle": 0.4548167642821614,
+        "aeroplane": 0.630884015471181,
+        "horse": 0.6127338340536669,
+        "cat": 0.659253460533036,
+        "dog": 0.5033119586338394
+      },
+      "exh_minus_failrate": -0.15999999999999995,
+      "epoch": 90,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5757355516304872,
+      "acc05": 0.68,
+      "mean_steps": 8.115,
+      "median_steps": 5.0,
+      "trigger_rate": 0.83,
+      "exhaust_rate": 0.17,
+      "trigger_ppv": 0.7590361445783133,
+      "exhaust_ppv": 0.29411764705882354,
+      "per_class": {
+        "bicycle": 0.4669639409503759,
+        "aeroplane": 0.627242653096548,
+        "horse": 0.6127338340536669,
+        "cat": 0.659253460533036,
+        "dog": 0.5124838695188085
+      },
+      "exh_minus_failrate": -0.14999999999999994,
+      "epoch": 91,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5731559296591033,
+      "acc05": 0.68,
+      "mean_steps": 8.215,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.754601226993865,
+      "exhaust_ppv": 0.35135135135135137,
+      "per_class": {
+        "bicycle": 0.46017390498175575,
+        "aeroplane": 0.6264143989391584,
+        "horse": 0.6087772101217805,
+        "cat": 0.6546695553461273,
+        "dog": 0.5157445789066946
+      },
+      "exh_minus_failrate": -0.13499999999999995,
+      "epoch": 92,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5737072752178534,
+      "acc05": 0.685,
+      "mean_steps": 8.205,
+      "median_steps": 5.5,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7621951219512195,
+      "exhaust_ppv": 0.3333333333333333,
+      "per_class": {
+        "bicycle": 0.45976483031892823,
+        "aeroplane": 0.6298795125171736,
+        "horse": 0.6071225007241209,
+        "cat": 0.6588755166284914,
+        "dog": 0.5128940159005533
+      },
+      "exh_minus_failrate": -0.13499999999999995,
+      "epoch": 93,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.572662425400129,
+      "acc05": 0.68,
+      "mean_steps": 8.21,
+      "median_steps": 5.5,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7560975609756098,
+      "exhaust_ppv": 0.3333333333333333,
+      "per_class": {
+        "bicycle": 0.46259957343368907,
+        "aeroplane": 0.6275826615151032,
+        "horse": 0.6101011881323457,
+        "cat": 0.6501346880189539,
+        "dog": 0.5128940159005533
+      },
+      "exh_minus_failrate": -0.13999999999999996,
+      "epoch": 94,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5742450325354185,
+      "acc05": 0.685,
+      "mean_steps": 8.255,
+      "median_steps": 5.5,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7607361963190185,
+      "exhaust_ppv": 0.35135135135135137,
+      "per_class": {
+        "bicycle": 0.46317014162973147,
+        "aeroplane": 0.6275826615151032,
+        "horse": 0.6101011881323457,
+        "cat": 0.6501346880189539,
+        "dog": 0.5202364833809581
+      },
+      "exh_minus_failrate": -0.12999999999999995,
+      "epoch": 95,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5736885703106588,
+      "acc05": 0.69,
+      "mean_steps": 8.165,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7668711656441718,
+      "exhaust_ppv": 0.35135135135135137,
+      "per_class": {
+        "bicycle": 0.45811759958068243,
+        "aeroplane": 0.627770273152026,
+        "horse": 0.6128844033637184,
+        "cat": 0.6501346880189539,
+        "dog": 0.5195358874379133
+      },
+      "exh_minus_failrate": -0.12500000000000006,
+      "epoch": 96,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5738940851810945,
+      "acc05": 0.685,
+      "mean_steps": 8.175,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7668711656441718,
+      "exhaust_ppv": 0.32432432432432434,
+      "per_class": {
+        "bicycle": 0.45811759958068243,
+        "aeroplane": 0.6337096333193399,
+        "horse": 0.6091828835474665,
+        "cat": 0.6528941816463026,
+        "dog": 0.5155661278116813
+      },
+      "exh_minus_failrate": -0.12999999999999995,
+      "epoch": 97,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5728528450192618,
+      "acc05": 0.675,
+      "mean_steps": 8.12,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7621951219512195,
+      "exhaust_ppv": 0.2777777777777778,
+      "per_class": {
+        "bicycle": 0.45811759958068243,
+        "aeroplane": 0.6337096333193399,
+        "horse": 0.6091828835474665,
+        "cat": 0.6523158479659721,
+        "dog": 0.5109382606828479
+      },
+      "exh_minus_failrate": -0.14499999999999996,
+      "epoch": 98,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.569358818768705,
+      "acc05": 0.67,
+      "mean_steps": 8.12,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7668711656441718,
+      "exhaust_ppv": 0.24324324324324326,
+      "per_class": {
+        "bicycle": 0.4572813163282331,
+        "aeroplane": 0.627395633967365,
+        "horse": 0.6088579715960558,
+        "cat": 0.6550192806051209,
+        "dog": 0.49823989134675023
+      },
+      "exh_minus_failrate": -0.14499999999999996,
+      "epoch": 99,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.569358818768705,
+      "acc05": 0.67,
+      "mean_steps": 8.13,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7668711656441718,
+      "exhaust_ppv": 0.24324324324324326,
+      "per_class": {
+        "bicycle": 0.4572813163282331,
+        "aeroplane": 0.627395633967365,
+        "horse": 0.6088579715960558,
+        "cat": 0.6550192806051209,
+        "dog": 0.49823989134675023
+      },
+      "exh_minus_failrate": -0.14499999999999996,
+      "epoch": 100,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5699694991424841,
+      "acc05": 0.67,
+      "mean_steps": 8.09,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7682926829268293,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.4572813163282331,
+        "aeroplane": 0.627395633967365,
+        "horse": 0.6088579715960558,
+        "cat": 0.6550192806051209,
+        "dog": 0.5012932932156454
+      },
+      "exh_minus_failrate": -0.14999999999999997,
+      "epoch": 101,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5719179231688262,
+      "acc05": 0.67,
+      "mean_steps": 8.165,
+      "median_steps": 5.0,
+      "trigger_rate": 0.815,
+      "exhaust_rate": 0.185,
+      "trigger_ppv": 0.7730061349693251,
+      "exhaust_ppv": 0.21621621621621623,
+      "per_class": {
+        "bicycle": 0.4572813163282331,
+        "aeroplane": 0.627395633967365,
+        "horse": 0.6099057159554936,
+        "cat": 0.6550192806051209,
+        "dog": 0.5099876689879179
+      },
+      "exh_minus_failrate": -0.14499999999999996,
+      "epoch": 102,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5718038095296176,
+      "acc05": 0.67,
+      "mean_steps": 8.115,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7682926829268293,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.4567107481321907,
+        "aeroplane": 0.627395633967365,
+        "horse": 0.6099057159554936,
+        "cat": 0.6550192806051209,
+        "dog": 0.5099876689879179
+      },
+      "exh_minus_failrate": -0.14999999999999997,
+      "epoch": 103,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5691940189231316,
+      "acc05": 0.66,
+      "mean_steps": 8.14,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7560975609756098,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.45714745970714576,
+        "aeroplane": 0.6129692773009088,
+        "horse": 0.6099057159554936,
+        "cat": 0.6550192806051209,
+        "dog": 0.5109283610469886
+      },
+      "exh_minus_failrate": -0.15999999999999998,
+      "epoch": 104,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5691222942712445,
+      "acc05": 0.66,
+      "mean_steps": 8.13,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7560975609756098,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.45714745970714576,
+        "aeroplane": 0.6129692773009088,
+        "horse": 0.6099057159554936,
+        "cat": 0.6546606573456859,
+        "dog": 0.5109283610469886
+      },
+      "exh_minus_failrate": -0.15999999999999998,
+      "epoch": 105,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5697329620076534,
+      "acc05": 0.66,
+      "mean_steps": 8.075,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7575757575757576,
+      "exhaust_ppv": 0.2,
+      "per_class": {
+        "bicycle": 0.4636644924869606,
+        "aeroplane": 0.6129692773009088,
+        "horse": 0.6085663589820219,
+        "cat": 0.6546606573456859,
+        "dog": 0.5088040239226903
+      },
+      "exh_minus_failrate": -0.16499999999999998,
+      "epoch": 106,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5702490882216674,
+      "acc05": 0.665,
+      "mean_steps": 8.075,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7575757575757576,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.4636644924869606,
+        "aeroplane": 0.6129692773009088,
+        "horse": 0.6085663589820219,
+        "cat": 0.6546606573456859,
+        "dog": 0.5113846549927603
+      },
+      "exh_minus_failrate": -0.15999999999999998,
+      "epoch": 107,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5720811180554186,
+      "acc05": 0.67,
+      "mean_steps": 8.095,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7636363636363637,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.4636644924869606,
+        "aeroplane": 0.6158846398262602,
+        "horse": 0.6085663589820219,
+        "cat": 0.6588845288734637,
+        "dog": 0.5134055701083863
+      },
+      "exh_minus_failrate": -0.15499999999999997,
+      "epoch": 108,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5720811180554186,
+      "acc05": 0.67,
+      "mean_steps": 8.085,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7636363636363637,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.4636644924869606,
+        "aeroplane": 0.6158846398262602,
+        "horse": 0.6085663589820219,
+        "cat": 0.6588845288734637,
+        "dog": 0.5134055701083863
+      },
+      "exh_minus_failrate": -0.15499999999999997,
+      "epoch": 109,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5725401271601948,
+      "acc05": 0.67,
+      "mean_steps": 8.075,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7636363636363637,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.46407356714978815,
+        "aeroplane": 0.6167128939836497,
+        "horse": 0.6085663589820219,
+        "cat": 0.6588845288734637,
+        "dog": 0.5144632868120501
+      },
+      "exh_minus_failrate": -0.15499999999999997,
+      "epoch": 110,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5719488242800355,
+      "acc05": 0.665,
+      "mean_steps": 8.145,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7575757575757576,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.46421271371750616,
+        "aeroplane": 0.610585922179413,
+        "horse": 0.6125383618768148,
+        "cat": 0.6588845288734637,
+        "dog": 0.5135225947529796
+      },
+      "exh_minus_failrate": -0.15999999999999998,
+      "epoch": 111,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5717405323383238,
+      "acc05": 0.665,
+      "mean_steps": 8.145,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7575757575757576,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.46421271371750616,
+        "aeroplane": 0.610585922179413,
+        "horse": 0.6125383618768148,
+        "cat": 0.6588845288734637,
+        "dog": 0.5124811350444212
+      },
+      "exh_minus_failrate": -0.15999999999999998,
+      "epoch": 112,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5714572388934918,
+      "acc05": 0.665,
+      "mean_steps": 8.19,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7575757575757576,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.46421271371750616,
+        "aeroplane": 0.6169409357295484,
+        "horse": 0.6047668811025194,
+        "cat": 0.6588845288734637,
+        "dog": 0.5124811350444212
+      },
+      "exh_minus_failrate": -0.15999999999999998,
+      "epoch": 113,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.571645377305306,
+      "acc05": 0.665,
+      "mean_steps": 8.19,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7575757575757576,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.46421271371750616,
+        "aeroplane": 0.6169409357295484,
+        "horse": 0.6047668811025194,
+        "cat": 0.6588845288734637,
+        "dog": 0.5134218271034918
+      },
+      "exh_minus_failrate": -0.15999999999999998,
+      "epoch": 114,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5729671132182272,
+      "acc05": 0.67,
+      "mean_steps": 8.195,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7682926829268293,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.4638998557564523,
+        "aeroplane": 0.6169409357295484,
+        "horse": 0.6116884186281799,
+        "cat": 0.6588845288734637,
+        "dog": 0.5134218271034918
+      },
+      "exh_minus_failrate": -0.14999999999999997,
+      "epoch": 115,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5731754051599389,
+      "acc05": 0.67,
+      "mean_steps": 8.195,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7682926829268293,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.4638998557564523,
+        "aeroplane": 0.6169409357295484,
+        "horse": 0.6116884186281799,
+        "cat": 0.6588845288734637,
+        "dog": 0.5144632868120501
+      },
+      "exh_minus_failrate": -0.14999999999999997,
+      "epoch": 116,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5716470751400381,
+      "acc05": 0.67,
+      "mean_steps": 8.145,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7682926829268293,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.46464413534583054,
+        "aeroplane": 0.6169409357295484,
+        "horse": 0.6097501575881901,
+        "cat": 0.6588845288734637,
+        "dog": 0.5080156181631577
+      },
+      "exh_minus_failrate": -0.14999999999999997,
+      "epoch": 117,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5709309812884988,
+      "acc05": 0.665,
+      "mean_steps": 8.17,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7621951219512195,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.46548041859827993,
+        "aeroplane": 0.610585922179413,
+        "horse": 0.6116884186281799,
+        "cat": 0.6588845288734637,
+        "dog": 0.5080156181631577
+      },
+      "exh_minus_failrate": -0.15499999999999997,
+      "epoch": 118,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.5707542960570796,
+      "acc05": 0.665,
+      "mean_steps": 8.17,
+      "median_steps": 5.0,
+      "trigger_rate": 0.82,
+      "exhaust_rate": 0.18,
+      "trigger_ppv": 0.7621951219512195,
+      "exhaust_ppv": 0.2222222222222222,
+      "per_class": {
+        "bicycle": 0.4645969924411837,
+        "aeroplane": 0.610585922179413,
+        "horse": 0.6116884186281799,
+        "cat": 0.6588845288734637,
+        "dog": 0.5080156181631577
+      },
+      "exh_minus_failrate": -0.15499999999999997,
+      "epoch": 119,
+      "eps": 0.1
+    },
+    {
+      "miou": 0.572095357153993,
+      "acc05": 0.67,
+      "mean_steps": 8.12,
+      "median_steps": 5.0,
+      "trigger_rate": 0.825,
+      "exhaust_rate": 0.175,
+      "trigger_ppv": 0.7636363636363637,
+      "exhaust_ppv": 0.22857142857142856,
+      "per_class": {
+        "bicycle": 0.4645969924411837,
+        "aeroplane": 0.6167128939836497,
+        "horse": 0.6116884186281799,
+        "cat": 0.6594628625537944,
+        "dog": 0.5080156181631577
+      },
+      "exh_minus_failrate": -0.15499999999999997,
+      "epoch": 120,
+      "eps": 0.1
+    }
+  ],
+  "params_M": 5.011915,
+  "train_minutes": 0.0,
+  "test_best": {
+    "last_box": {
+      "miou": 0.5719928603019199,
+      "acc05": 0.689,
+      "mean_steps": 7.811,
+      "median_steps": 6.0,
+      "trigger_rate": 0.854,
+      "exhaust_rate": 0.146,
+      "trigger_ppv": 0.7611241217798594,
+      "exhaust_ppv": 0.2671232876712329,
+      "per_class": {
+        "bicycle": 0.5156014035433721,
+        "aeroplane": 0.5866952721014815,
+        "horse": 0.5681211957284903,
+        "cat": 0.6227158194948115,
+        "dog": 0.5668306106414438
+      },
+      "exh_minus_failrate": -0.16500000000000006
+    },
+    "conf_box": {
+      "miou": 0.571767089974703,
+      "acc05": 0.691,
+      "mean_steps": 7.811,
+      "median_steps": 6.0,
+      "trigger_rate": 0.854,
+      "exhaust_rate": 0.146,
+      "trigger_ppv": 0.7611241217798594,
+      "exhaust_ppv": 0.2808219178082192,
+      "per_class": {
+        "bicycle": 0.5166048586905295,
+        "aeroplane": 0.5863205531330165,
+        "horse": 0.5684191217440231,
+        "cat": 0.6233465516921964,
+        "dog": 0.56414436461375
+      },
+      "exh_minus_failrate": -0.16300000000000006
+    }
+  },
+  "test_final": {
+    "last_box": {
+      "miou": 0.5736884908639475,
+      "acc05": 0.681,
+      "mean_steps": 7.935,
+      "median_steps": 6.0,
+      "trigger_rate": 0.858,
+      "exhaust_rate": 0.142,
+      "trigger_ppv": 0.7435897435897436,
+      "exhaust_ppv": 0.3028169014084507,
+      "per_class": {
+        "bicycle": 0.5191721384787708,
+        "aeroplane": 0.5919016354798792,
+        "horse": 0.5654931514425448,
+        "cat": 0.6194400968166356,
+        "dog": 0.5724354321019071
+      },
+      "exh_minus_failrate": -0.17699999999999996
+    },
+    "conf_box": {
+      "miou": 0.5755543533437683,
+      "acc05": 0.682,
+      "mean_steps": 7.935,
+      "median_steps": 6.0,
+      "trigger_rate": 0.858,
+      "exhaust_rate": 0.142,
+      "trigger_ppv": 0.7435897435897436,
+      "exhaust_ppv": 0.30985915492957744,
+      "per_class": {
+        "bicycle": 0.5245436330032355,
+        "aeroplane": 0.5967014089352215,
+        "horse": 0.563430888561993,
+        "cat": 0.6186121460522027,
+        "dog": 0.5744836901661889
+      },
+      "exh_minus_failrate": -0.17599999999999996
+    }
+  }
+}
