@@ -1,0 +1,52 @@
+=== Calibration analysis: results/results_final/desc_dinov2_records.json.gz  (iou_key=last_iou) ===
+n episodes: 1000
+
+PPV(triggered)=0.9005  PPV(exhausted)=0.2540  gap=0.6465
+
+--- Test A: coverage-matched random-rejector permutation test ---
+observed PPV gap = 0.6465
+permutation p-value (B=10000) = 0.00010
+supports the calibrated-rejection claim
+
+--- Test B: Brier reliability/resolution decomposition ---
+REL=0.0000  RES=0.0460  UNC=0.1482  skill=RES/UNC=0.310
+RES 95% bootstrap CI = [0.0337, 0.0597]
+supports (CI excludes 0: True)
+
+--- Test C: per-class deviation vs random-rejector null ---
+  !! aeroplane      n= 200  dev=0.040  CI=[0.005,0.085]  random_band=[0.005,0.090]
+  !! bicycle        n= 200  dev=0.105  CI=[0.050,0.160]  random_band=[0.045,0.165]
+  !! cat            n= 200  dev=0.030  CI=[0.000,0.065]  random_band=[0.000,0.080]
+  !! dog            n= 200  dev=0.050  CI=[0.005,0.095]  random_band=[0.005,0.105]
+  !! horse          n= 200  dev=0.050  CI=[0.005,0.100]  random_band=[0.005,0.105]
+0/5 classes fall below the random-rejector band
+
+--- Test D: fixed-schedule stopping control ---
+  k= 1  CorLoc=0.4198  n= 941  coverage=0.941
+  k= 2  CorLoc=0.4559  n= 851  coverage=0.851
+  k= 3  CorLoc=0.4423  n= 737  coverage=0.737
+  k= 4  CorLoc=0.4295  n= 638  coverage=0.638
+  k= 5  CorLoc=0.4195  n= 553  coverage=0.553
+  k= 6  CorLoc=0.3941  n= 472  coverage=0.472
+  k= 7  CorLoc=0.3873  n= 408  coverage=0.408
+  k= 8  CorLoc=0.3485  n= 330  coverage=0.330
+  k= 9  CorLoc=0.3737  n= 289  coverage=0.289
+  k=10  CorLoc=0.3294  n= 252  coverage=0.252
+  k=11  CorLoc=0.2863  n= 227  coverage=0.227
+  k=12  CorLoc=0.2696  n= 204  coverage=0.204
+  k=13  CorLoc=0.2772  n= 184  coverage=0.184
+  k=14  CorLoc=0.2959  n= 169  coverage=0.169
+  k=15  CorLoc=0.2675  n= 157  coverage=0.157
+  k=16  CorLoc=0.2653  n= 147  coverage=0.147
+  k=17  CorLoc=0.2357  n= 140  coverage=0.140
+  k=18  CorLoc=0.2889  n= 135  coverage=0.135
+  k=19  CorLoc=0.2424  n= 132  coverage=0.132
+  k=20  CorLoc=0.2540  n= 126  coverage=0.126
+(compare against the learned model's actual CorLoc, printed above)
+
+--- Test E: risk-coverage / AURC ---
+AURC(model)  = 0.1130
+AURC(oracle) = 0.0175  (lower bound)
+AURC(random) = 0.1722  (upper bound / chance)
+E-AURC (model - oracle) = 0.0955
+supports (model AURC < random AURC)

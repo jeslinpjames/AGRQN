@@ -1,0 +1,67 @@
+=== Calibration analysis: results/results_20class/voc20_none_20cls_records.json.gz  (iou_key=last_iou) ===
+n episodes: 2000
+
+PPV(triggered)=0.7860  PPV(exhausted)=0.1860  gap=0.6000
+
+--- Test A: coverage-matched random-rejector permutation test ---
+observed PPV gap = 0.6000
+permutation p-value (B=10000) = 0.00010
+supports the calibrated-rejection claim
+
+--- Test B: Brier reliability/resolution decomposition ---
+REL=0.0000  RES=0.0827  UNC=0.2449  skill=RES/UNC=0.338
+RES 95% bootstrap CI = [0.0728, 0.0931]
+supports (CI excludes 0: True)
+
+--- Test C: per-class deviation vs random-rejector null ---
+  !! aeroplane      n= 100  dev=0.150  CI=[0.080,0.220]  random_band=[0.070,0.230]
+  !! bicycle        n= 100  dev=0.160  CI=[0.080,0.250]  random_band=[0.060,0.260]
+  !! bird           n= 100  dev=0.140  CI=[0.050,0.230]  random_band=[0.040,0.240]
+  !! boat           n= 100  dev=0.210  CI=[0.110,0.300]  random_band=[0.110,0.300]
+  !! bottle         n= 100  dev=0.150  CI=[0.060,0.250]  random_band=[0.060,0.250]
+  !! bus            n= 100  dev=0.150  CI=[0.080,0.230]  random_band=[0.060,0.240]
+  !! car            n= 100  dev=0.070  CI=[0.010,0.150]  random_band=[0.000,0.170]
+  !! cat            n= 100  dev=0.120  CI=[0.050,0.190]  random_band=[0.040,0.210]
+  !! chair          n= 100  dev=0.020  CI=[0.000,0.110]  random_band=[0.000,0.120]
+  !! cow            n= 100  dev=0.140  CI=[0.070,0.220]  random_band=[0.050,0.240]
+  !! diningtable    n= 100  dev=0.150  CI=[0.050,0.250]  random_band=[0.050,0.250]
+  !! dog            n= 100  dev=0.100  CI=[0.020,0.190]  random_band=[0.010,0.190]
+  !! horse          n= 100  dev=0.050  CI=[0.000,0.130]  random_band=[0.000,0.130]
+  !! motorbike      n= 100  dev=0.080  CI=[0.010,0.160]  random_band=[0.010,0.170]
+  !! person         n= 100  dev=0.070  CI=[0.000,0.170]  random_band=[0.000,0.170]
+  !! pottedplant    n= 100  dev=0.000  CI=[0.000,0.090]  random_band=[0.000,0.110]
+  !! sheep          n= 100  dev=0.150  CI=[0.070,0.230]  random_band=[0.050,0.250]
+  !! sofa           n= 100  dev=0.060  CI=[0.000,0.160]  random_band=[0.000,0.160]
+  !! train          n= 100  dev=0.080  CI=[0.010,0.150]  random_band=[0.010,0.160]
+  !! tvmonitor      n= 100  dev=0.010  CI=[0.000,0.110]  random_band=[0.000,0.110]
+0/20 classes fall below the random-rejector band
+
+--- Test D: fixed-schedule stopping control ---
+  k= 1  CorLoc=0.2994  n=1797  coverage=0.898
+  k= 2  CorLoc=0.3153  n=1608  coverage=0.804
+  k= 3  CorLoc=0.2986  n=1393  coverage=0.697
+  k= 4  CorLoc=0.2855  n=1247  coverage=0.624
+  k= 5  CorLoc=0.2890  n=1128  coverage=0.564
+  k= 6  CorLoc=0.2505  n=1034  coverage=0.517
+  k= 7  CorLoc=0.2166  n= 937  coverage=0.469
+  k= 8  CorLoc=0.2419  n= 893  coverage=0.447
+  k= 9  CorLoc=0.2145  n= 844  coverage=0.422
+  k=10  CorLoc=0.2072  n= 811  coverage=0.406
+  k=11  CorLoc=0.2218  n= 789  coverage=0.395
+  k=12  CorLoc=0.1971  n= 771  coverage=0.386
+  k=13  CorLoc=0.1950  n= 759  coverage=0.380
+  k=14  CorLoc=0.2040  n= 750  coverage=0.375
+  k=15  CorLoc=0.1857  n= 743  coverage=0.371
+  k=16  CorLoc=0.1875  n= 736  coverage=0.368
+  k=17  CorLoc=0.1967  n= 732  coverage=0.366
+  k=18  CorLoc=0.1975  n= 724  coverage=0.362
+  k=19  CorLoc=0.2058  n= 719  coverage=0.359
+  k=20  CorLoc=0.1860  n= 715  coverage=0.357
+(compare against the learned model's actual CorLoc, printed above)
+
+--- Test E: risk-coverage / AURC ---
+AURC(model)  = 0.2434
+AURC(oracle) = 0.1088  (lower bound)
+AURC(random) = 0.4177  (upper bound / chance)
+E-AURC (model - oracle) = 0.1346
+supports (model AURC < random AURC)
