@@ -1,0 +1,284 @@
+
+=== control  (config control, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-11.26, 3.19] | confs~Q_trig corr 0.8523308649069777 | confs~margin corr 0.9999999999999993 | confs best-matching Q col 8
+    decision            n=  1000 base=0.683 | AUROC 0.826 [0.796,0.854] | ECE 0.191 [0.168,0.215] aECE 0.188 | REL 0.0448 [0.0349,0.0569] RES 0.0616 UNC 0.2165 | Brier 0.1963 | gap +0.188 | oor 0.223 | Platt-ECE 0.084 [0.064,0.110]
+    allstates           n=  7568 base=0.356 | AUROC 0.848 [0.831,0.864] | ECE 0.142 [0.124,0.159] aECE 0.141 | REL 0.0265 [0.0200,0.0342] RES 0.0793 UNC 0.2291 | Brier 0.1756 | gap +0.133 | oor 0.181 | Platt-ECE 0.019 [0.017,0.036]
+    decision_triggered  n=   884 base=0.742 | AUROC 0.786 [0.748,0.820] | ECE 0.200 [0.173,0.227] aECE 0.200 | REL 0.0496 [0.0380,0.0639] RES 0.0332 UNC 0.1914 | Brier 0.2032 | gap +0.200 | oor 0.227 | Platt-ECE 0.054 [0.033,0.081]
+    decision_exhausted  n=   116 base=0.233 | AUROC 0.829 [0.727,0.916] | ECE 0.133 [0.097,0.204] aECE 0.136 | REL 0.0241 [0.0155,0.0597] RES 0.0629 UNC 0.1786 | Brier 0.1433 | gap +0.098 | oor 0.190 | Platt-ECE 0.094 [0.068,0.169]
+
+=== control_s1  (config control, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-12.52, 3.57] | confs~Q_trig corr 0.8316243467049255 | confs~margin corr 0.9999999999999992 | confs best-matching Q col 8
+    decision            n=  1000 base=0.654 | AUROC 0.818 [0.791,0.845] | ECE 0.189 [0.164,0.214] aECE 0.188 | REL 0.0430 [0.0335,0.0574] RES 0.0606 UNC 0.2263 | Brier 0.2046 | gap +0.165 | oor 0.242 | Platt-ECE 0.071 [0.057,0.097]
+    allstates           n=  8208 base=0.338 | AUROC 0.826 [0.805,0.845] | ECE 0.139 [0.122,0.158] aECE 0.138 | REL 0.0256 [0.0191,0.0339] RES 0.0680 UNC 0.2237 | Brier 0.1800 | gap +0.116 | oor 0.208 | Platt-ECE 0.037 [0.028,0.056]
+    decision_triggered  n=   817 base=0.738 | AUROC 0.772 [0.735,0.808] | ECE 0.195 [0.165,0.223] aECE 0.195 | REL 0.0459 [0.0339,0.0609] RES 0.0281 UNC 0.1933 | Brier 0.2063 | gap +0.195 | oor 0.237 | Platt-ECE 0.060 [0.042,0.090]
+    decision_exhausted  n=   183 base=0.279 | AUROC 0.712 [0.631,0.791] | ECE 0.163 [0.121,0.226] aECE 0.164 | REL 0.0366 [0.0255,0.0738] RES 0.0396 UNC 0.2010 | Brier 0.1970 | gap +0.032 | oor 0.262 | Platt-ECE 0.081 [0.061,0.153]
+
+=== control_s7  (config control, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-8.85, 3.57] | confs~Q_trig corr 0.8223881977025603 | confs~margin corr 0.9999999999999993 | confs best-matching Q col 8
+    decision            n=  1000 base=0.687 | AUROC 0.837 [0.810,0.865] | ECE 0.160 [0.138,0.185] aECE 0.149 | REL 0.0321 [0.0238,0.0443] RES 0.0694 UNC 0.2150 | Brier 0.1748 | gap +0.149 | oor 0.248 | Platt-ECE 0.089 [0.072,0.115]
+    allstates           n=  7876 base=0.338 | AUROC 0.855 [0.838,0.871] | ECE 0.130 [0.112,0.147] aECE 0.130 | REL 0.0211 [0.0158,0.0282] RES 0.0819 UNC 0.2239 | Brier 0.1626 | gap +0.116 | oor 0.204 | Platt-ECE 0.022 [0.016,0.038]
+    decision_triggered  n=   840 base=0.776 | AUROC 0.776 [0.735,0.819] | ECE 0.160 [0.136,0.188] aECE 0.160 | REL 0.0345 [0.0256,0.0480] RES 0.0303 UNC 0.1737 | Brier 0.1746 | gap +0.160 | oor 0.257 | Platt-ECE 0.051 [0.034,0.080]
+    decision_exhausted  n=   160 base=0.219 | AUROC 0.711 [0.611,0.806] | ECE 0.163 [0.120,0.225] aECE 0.154 | REL 0.0334 [0.0205,0.0664] RES 0.0274 UNC 0.1709 | Brier 0.1758 | gap +0.094 | oor 0.200 | Platt-ECE 0.074 [0.040,0.134]
+
+=== desc_dinov2  (config desc_dinov2, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-9.12, 3.35] | confs~Q_trig corr 0.903380660135855 | confs~margin corr 0.9999999999999988 | confs best-matching Q col 8
+    decision            n=  1000 base=0.815 | AUROC 0.889 [0.857,0.919] | ECE 0.088 [0.070,0.107] aECE 0.088 | REL 0.0133 [0.0092,0.0211] RES 0.0679 UNC 0.1508 | Brier 0.0947 | gap +0.087 | oor 0.355 | Platt-ECE 0.048 [0.034,0.069]
+    allstates           n=  7966 base=0.382 | AUROC 0.922 [0.911,0.933] | ECE 0.124 [0.107,0.140] aECE 0.128 | REL 0.0242 [0.0182,0.0314] RES 0.1289 UNC 0.2361 | Brier 0.1303 | gap +0.122 | oor 0.243 | Platt-ECE 0.027 [0.020,0.040]
+    decision_triggered  n=   874 base=0.900 | AUROC 0.794 [0.738,0.846] | ECE 0.077 [0.058,0.096] aECE 0.077 | REL 0.0092 [0.0053,0.0160] RES 0.0111 UNC 0.0896 | Brier 0.0861 | gap +0.077 | oor 0.378 | Platt-ECE 0.031 [0.018,0.051]
+    decision_exhausted  n=   126 base=0.222 | AUROC 0.858 [0.771,0.934] | ECE 0.170 [0.126,0.239] aECE 0.178 | REL 0.0463 [0.0308,0.0897] RES 0.0665 UNC 0.1728 | Brier 0.1544 | gap +0.162 | oor 0.198 | Platt-ECE 0.112 [0.076,0.190]
+
+=== desc_dinov2_none  (config desc_dinov2_none, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-8.71, 3.42] | confs~Q_trig corr 0.8774823203739793 | confs~margin corr 0.9999999999999986 | confs best-matching Q col 8
+    decision            n=  1000 base=0.781 | AUROC 0.893 [0.867,0.921] | ECE 0.089 [0.074,0.110] aECE 0.089 | REL 0.0121 [0.0088,0.0194] RES 0.0816 UNC 0.1710 | Brier 0.0991 | gap +0.089 | oor 0.352 | Platt-ECE 0.048 [0.034,0.070]
+    allstates           n=  8620 base=0.363 | AUROC 0.915 [0.903,0.926] | ECE 0.127 [0.111,0.143] aECE 0.130 | REL 0.0251 [0.0191,0.0330] RES 0.1212 UNC 0.2312 | Brier 0.1341 | gap +0.124 | oor 0.263 | Platt-ECE 0.034 [0.026,0.047]
+    decision_triggered  n=   827 base=0.900 | AUROC 0.760 [0.700,0.815] | ECE 0.082 [0.064,0.101] aECE 0.080 | REL 0.0092 [0.0058,0.0145] RES 0.0081 UNC 0.0903 | Brier 0.0892 | gap +0.080 | oor 0.374 | Platt-ECE 0.028 [0.015,0.050]
+    decision_exhausted  n=   173 base=0.214 | AUROC 0.862 [0.798,0.912] | ECE 0.135 [0.100,0.200] aECE 0.134 | REL 0.0354 [0.0221,0.0723] RES 0.0545 UNC 0.1681 | Brier 0.1465 | gap +0.134 | oor 0.249 | Platt-ECE 0.054 [0.050,0.125]
+
+=== desc_dinov2_none_s1  (config desc_dinov2_none, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-10.12, 3.49] | confs~Q_trig corr 0.8725905772753725 | confs~margin corr 0.9999999999999992 | confs best-matching Q col 8
+    decision            n=  1000 base=0.779 | AUROC 0.890 [0.857,0.921] | ECE 0.096 [0.080,0.118] aECE 0.092 | REL 0.0168 [0.0120,0.0249] RES 0.0840 UNC 0.1722 | Brier 0.1029 | gap +0.092 | oor 0.396 | Platt-ECE 0.063 [0.049,0.085]
+    allstates           n=  8305 base=0.353 | AUROC 0.905 [0.890,0.919] | ECE 0.137 [0.122,0.153] aECE 0.136 | REL 0.0304 [0.0238,0.0385] RES 0.1158 UNC 0.2285 | Brier 0.1418 | gap +0.125 | oor 0.261 | Platt-ECE 0.043 [0.035,0.057]
+    decision_triggered  n=   828 base=0.899 | AUROC 0.752 [0.684,0.815] | ECE 0.081 [0.062,0.101] aECE 0.081 | REL 0.0091 [0.0054,0.0164] RES 0.0102 UNC 0.0912 | Brier 0.0879 | gap +0.081 | oor 0.431 | Platt-ECE 0.039 [0.023,0.058]
+    decision_exhausted  n=   172 base=0.203 | AUROC 0.799 [0.714,0.879] | ECE 0.171 [0.134,0.234] aECE 0.172 | REL 0.0659 [0.0438,0.1054] RES 0.0521 UNC 0.1621 | Brier 0.1749 | gap +0.149 | oor 0.227 | Platt-ECE 0.062 [0.048,0.124]
+
+=== desc_dinov2_none_s7  (config desc_dinov2_none, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-8.25, 3.80] | confs~Q_trig corr 0.8659433672060515 | confs~margin corr 0.9999999999999988 | confs best-matching Q col 8
+    decision            n=  1000 base=0.755 | AUROC 0.868 [0.839,0.898] | ECE 0.114 [0.094,0.135] aECE 0.112 | REL 0.0189 [0.0140,0.0278] RES 0.0816 UNC 0.1850 | Brier 0.1200 | gap +0.112 | oor 0.332 | Platt-ECE 0.028 [0.020,0.050]
+    allstates           n=  8192 base=0.348 | AUROC 0.911 [0.897,0.925] | ECE 0.142 [0.124,0.158] aECE 0.145 | REL 0.0296 [0.0224,0.0378] RES 0.1164 UNC 0.2268 | Brier 0.1390 | gap +0.136 | oor 0.236 | Platt-ECE 0.039 [0.030,0.052]
+    decision_triggered  n=   824 base=0.871 | AUROC 0.740 [0.682,0.798] | ECE 0.105 [0.082,0.126] aECE 0.103 | REL 0.0153 [0.0103,0.0228] RES 0.0134 UNC 0.1121 | Brier 0.1111 | gap +0.103 | oor 0.368 | Platt-ECE 0.038 [0.022,0.061]
+    decision_exhausted  n=   176 base=0.210 | AUROC 0.814 [0.725,0.893] | ECE 0.166 [0.123,0.222] aECE 0.174 | REL 0.0464 [0.0301,0.0837] RES 0.0513 UNC 0.1660 | Brier 0.1621 | gap +0.155 | oor 0.165 | Platt-ECE 0.029 [0.034,0.103]
+
+=== desc_dinov2_s1  (config desc_dinov2, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-7.99, 3.33] | confs~Q_trig corr 0.9091663304665141 | confs~margin corr 0.9999999999999991 | confs best-matching Q col 8
+    decision            n=  1000 base=0.805 | AUROC 0.868 [0.832,0.901] | ECE 0.094 [0.077,0.113] aECE 0.083 | REL 0.0144 [0.0102,0.0227] RES 0.0711 UNC 0.1570 | Brier 0.0990 | gap +0.083 | oor 0.377 | Platt-ECE 0.043 [0.031,0.064]
+    allstates           n=  8362 base=0.390 | AUROC 0.912 [0.899,0.923] | ECE 0.128 [0.113,0.143] aECE 0.129 | REL 0.0253 [0.0198,0.0327] RES 0.1255 UNC 0.2378 | Brier 0.1367 | gap +0.118 | oor 0.265 | Platt-ECE 0.047 [0.037,0.059]
+    decision_triggered  n=   849 base=0.903 | AUROC 0.725 [0.651,0.791] | ECE 0.081 [0.062,0.100] aECE 0.078 | REL 0.0105 [0.0064,0.0172] RES 0.0093 UNC 0.0873 | Brier 0.0870 | gap +0.078 | oor 0.398 | Platt-ECE 0.030 [0.017,0.052]
+    decision_exhausted  n=   151 base=0.252 | AUROC 0.793 [0.695,0.891] | ECE 0.192 [0.140,0.254] aECE 0.177 | REL 0.0538 [0.0355,0.0936] RES 0.0759 UNC 0.1883 | Brier 0.1664 | gap +0.114 | oor 0.258 | Platt-ECE 0.102 [0.076,0.167]
+
+=== desc_dinov2_s7  (config desc_dinov2, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-8.64, 3.51] | confs~Q_trig corr 0.9081746633236996 | confs~margin corr 0.9999999999999991 | confs best-matching Q col 8
+    decision            n=  1000 base=0.780 | AUROC 0.862 [0.827,0.895] | ECE 0.111 [0.094,0.130] aECE 0.110 | REL 0.0196 [0.0150,0.0280] RES 0.0789 UNC 0.1716 | Brier 0.1100 | gap +0.110 | oor 0.368 | Platt-ECE 0.032 [0.020,0.053]
+    allstates           n=  8782 base=0.388 | AUROC 0.924 [0.913,0.935] | ECE 0.139 [0.123,0.157] aECE 0.141 | REL 0.0299 [0.0235,0.0385] RES 0.1304 UNC 0.2374 | Brier 0.1356 | gap +0.139 | oor 0.248 | Platt-ECE 0.038 [0.029,0.051]
+    decision_triggered  n=   818 base=0.894 | AUROC 0.700 [0.633,0.764] | ECE 0.086 [0.068,0.110] aECE 0.086 | REL 0.0098 [0.0062,0.0175] RES 0.0079 UNC 0.0950 | Brier 0.0949 | gap +0.086 | oor 0.416 | Platt-ECE 0.014 [0.013,0.039]
+    decision_exhausted  n=   182 base=0.269 | AUROC 0.890 [0.831,0.940] | ECE 0.220 [0.172,0.273] aECE 0.219 | REL 0.0669 [0.0467,0.1053] RES 0.0837 UNC 0.1967 | Brier 0.1780 | gap +0.216 | oor 0.154 | Platt-ECE 0.044 [0.043,0.111]
+
+=== desc_dinov2_selfattn_s1  (config desc_dinov2_selfattn, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-8.99, 3.35] | confs~Q_trig corr 0.8829503323046759 | confs~margin corr 0.999999999999999 | confs best-matching Q col 8
+    decision            n=  1000 base=0.775 | AUROC 0.881 [0.852,0.912] | ECE 0.109 [0.092,0.130] aECE 0.106 | REL 0.0235 [0.0171,0.0344] RES 0.0794 UNC 0.1744 | Brier 0.1171 | gap +0.106 | oor 0.333 | Platt-ECE 0.051 [0.037,0.073]
+    allstates           n=  8038 base=0.364 | AUROC 0.910 [0.896,0.922] | ECE 0.123 [0.106,0.139] aECE 0.126 | REL 0.0231 [0.0176,0.0303] RES 0.1181 UNC 0.2316 | Brier 0.1355 | gap +0.118 | oor 0.251 | Platt-ECE 0.030 [0.023,0.044]
+    decision_triggered  n=   854 base=0.869 | AUROC 0.803 [0.752,0.857] | ECE 0.102 [0.082,0.123] aECE 0.103 | REL 0.0218 [0.0141,0.0323] RES 0.0255 UNC 0.1139 | Brier 0.1083 | gap +0.102 | oor 0.351 | Platt-ECE 0.034 [0.023,0.057]
+    decision_exhausted  n=   146 base=0.226 | AUROC 0.810 [0.717,0.889] | ECE 0.155 [0.112,0.223] aECE 0.158 | REL 0.0414 [0.0242,0.0899] RES 0.0490 UNC 0.1749 | Brier 0.1684 | gap +0.134 | oor 0.226 | Platt-ECE 0.037 [0.035,0.117]
+
+=== desc_dinov2_selfattn_s42  (config desc_dinov2_selfattn, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-10.76, 3.38] | confs~Q_trig corr 0.8958225321520451 | confs~margin corr 0.999999999999999 | confs best-matching Q col 8
+    decision            n=  1000 base=0.797 | AUROC 0.851 [0.813,0.885] | ECE 0.101 [0.083,0.122] aECE 0.096 | REL 0.0132 [0.0093,0.0211] RES 0.0651 UNC 0.1618 | Brier 0.1079 | gap +0.096 | oor 0.322 | Platt-ECE 0.032 [0.021,0.054]
+    allstates           n=  8241 base=0.383 | AUROC 0.922 [0.911,0.932] | ECE 0.127 [0.111,0.143] aECE 0.129 | REL 0.0243 [0.0188,0.0315] RES 0.1275 UNC 0.2363 | Brier 0.1318 | gap +0.125 | oor 0.232 | Platt-ECE 0.035 [0.027,0.047]
+    decision_triggered  n=   847 base=0.891 | AUROC 0.709 [0.642,0.771] | ECE 0.091 [0.072,0.113] aECE 0.091 | REL 0.0103 [0.0067,0.0177] RES 0.0061 UNC 0.0968 | Brier 0.0991 | gap +0.091 | oor 0.349 | Platt-ECE 0.037 [0.022,0.058]
+    decision_exhausted  n=   153 base=0.275 | AUROC 0.843 [0.760,0.913] | ECE 0.155 [0.113,0.213] aECE 0.146 | REL 0.0332 [0.0234,0.0659] RES 0.0734 UNC 0.1992 | Brier 0.1568 | gap +0.122 | oor 0.170 | Platt-ECE 0.079 [0.057,0.146]
+
+=== desc_dinov2_selfattn_s7  (config desc_dinov2_selfattn, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-8.67, 3.38] | confs~Q_trig corr 0.8941932466621414 | confs~margin corr 0.9999999999999992 | confs best-matching Q col 8
+    decision            n=  1000 base=0.791 | AUROC 0.855 [0.818,0.892] | ECE 0.104 [0.086,0.123] aECE 0.104 | REL 0.0187 [0.0131,0.0277] RES 0.0734 UNC 0.1653 | Brier 0.1083 | gap +0.104 | oor 0.342 | Platt-ECE 0.046 [0.032,0.067]
+    allstates           n=  8495 base=0.396 | AUROC 0.916 [0.904,0.927] | ECE 0.125 [0.109,0.141] aECE 0.130 | REL 0.0241 [0.0181,0.0313] RES 0.1267 UNC 0.2391 | Brier 0.1351 | gap +0.122 | oor 0.256 | Platt-ECE 0.042 [0.032,0.057]
+    decision_triggered  n=   840 base=0.885 | AUROC 0.721 [0.651,0.782] | ECE 0.095 [0.077,0.117] aECE 0.094 | REL 0.0167 [0.0109,0.0261] RES 0.0163 UNC 0.1021 | Brier 0.1007 | gap +0.094 | oor 0.369 | Platt-ECE 0.034 [0.020,0.054]
+    decision_exhausted  n=   160 base=0.300 | AUROC 0.910 [0.863,0.950] | ECE 0.156 [0.114,0.216] aECE 0.159 | REL 0.0421 [0.0273,0.0772] RES 0.0992 UNC 0.2100 | Brier 0.1485 | gap +0.156 | oor 0.200 | Platt-ECE 0.067 [0.055,0.136]
+
+=== desc_vgg_none  (config desc_vgg_none, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-10.28, 3.87] | confs~Q_trig corr 0.7676119551178113 | confs~margin corr 0.9999999999999989 | confs best-matching Q col 8
+    decision            n=  1000 base=0.576 | AUROC 0.854 [0.829,0.876] | ECE 0.178 [0.155,0.203] aECE 0.173 | REL 0.0382 [0.0294,0.0511] RES 0.0848 UNC 0.2442 | Brier 0.1935 | gap +0.153 | oor 0.285 | Platt-ECE 0.061 [0.048,0.089]
+    allstates           n=  9503 base=0.293 | AUROC 0.821 [0.800,0.840] | ECE 0.113 [0.096,0.131] aECE 0.113 | REL 0.0172 [0.0124,0.0236] RES 0.0590 UNC 0.2073 | Brier 0.1651 | gap +0.084 | oor 0.238 | Platt-ECE 0.021 [0.016,0.036]
+    decision_triggered  n=   716 base=0.729 | AUROC 0.782 [0.745,0.819] | ECE 0.197 [0.168,0.227] aECE 0.197 | REL 0.0450 [0.0328,0.0604] RES 0.0292 UNC 0.1975 | Brier 0.2077 | gap +0.197 | oor 0.272 | Platt-ECE 0.064 [0.044,0.098]
+    decision_exhausted  n=   284 base=0.190 | AUROC 0.704 [0.624,0.785] | ECE 0.130 [0.095,0.179] aECE 0.135 | REL 0.0225 [0.0147,0.0445] RES 0.0183 UNC 0.1540 | Brier 0.1575 | gap +0.043 | oor 0.317 | Platt-ECE 0.016 [0.020,0.071]
+
+=== dinov2_gradcam  (config dinov2_gradcam, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-14.04, 3.40] | confs~Q_trig corr 0.8873683018404455 | confs~margin corr 0.999999999999999 | confs best-matching Q col 8
+    decision            n=  1000 base=0.766 | AUROC 0.860 [0.828,0.890] | ECE 0.119 [0.101,0.142] aECE 0.113 | REL 0.0215 [0.0161,0.0311] RES 0.0699 UNC 0.1792 | Brier 0.1281 | gap +0.113 | oor 0.349 | Platt-ECE 0.038 [0.026,0.061]
+    allstates           n=  8259 base=0.375 | AUROC 0.908 [0.895,0.920] | ECE 0.128 [0.112,0.143] aECE 0.129 | REL 0.0262 [0.0201,0.0333] RES 0.1201 UNC 0.2342 | Brier 0.1393 | gap +0.120 | oor 0.268 | Platt-ECE 0.045 [0.036,0.059]
+    decision_triggered  n=   838 base=0.869 | AUROC 0.745 [0.691,0.799] | ECE 0.108 [0.088,0.131] aECE 0.104 | REL 0.0150 [0.0105,0.0233] RES 0.0107 UNC 0.1140 | Brier 0.1156 | gap +0.104 | oor 0.371 | Platt-ECE 0.042 [0.026,0.067]
+    decision_exhausted  n=   162 base=0.235 | AUROC 0.776 [0.680,0.866] | ECE 0.197 [0.153,0.265] aECE 0.206 | REL 0.0689 [0.0467,0.1119] RES 0.0544 UNC 0.1795 | Brier 0.1927 | gap +0.156 | oor 0.235 | Platt-ECE 0.121 [0.080,0.181]
+
+=== dinov2_nohist  (config dinov2_nohist, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-8.96, 3.28] | confs~Q_trig corr 0.919165332512233 | confs~margin corr 0.9999999999999991 | confs best-matching Q col 8
+    decision            n=  1000 base=0.745 | AUROC 0.908 [0.884,0.928] | ECE 0.101 [0.084,0.122] aECE 0.093 | REL 0.0162 [0.0112,0.0251] RES 0.0912 UNC 0.1900 | Brier 0.1134 | gap +0.093 | oor 0.335 | Platt-ECE 0.035 [0.026,0.058]
+    allstates           n=  9790 base=0.402 | AUROC 0.906 [0.890,0.920] | ECE 0.118 [0.101,0.135] aECE 0.120 | REL 0.0194 [0.0143,0.0266] RES 0.1201 UNC 0.2404 | Brier 0.1382 | gap +0.108 | oor 0.231 | Platt-ECE 0.034 [0.027,0.050]
+    decision_triggered  n=   690 base=0.894 | AUROC 0.814 [0.752,0.873] | ECE 0.087 [0.066,0.109] aECE 0.088 | REL 0.0121 [0.0066,0.0202] RES 0.0104 UNC 0.0946 | Brier 0.0941 | gap +0.087 | oor 0.403 | Platt-ECE 0.037 [0.024,0.059]
+    decision_exhausted  n=   310 base=0.413 | AUROC 0.877 [0.835,0.916] | ECE 0.133 [0.102,0.176] aECE 0.136 | REL 0.0299 [0.0186,0.0533] RES 0.1152 UNC 0.2424 | Brier 0.1564 | gap +0.106 | oor 0.184 | Platt-ECE 0.079 [0.061,0.125]
+
+=== dinov2_singleq  (config dinov2_singleq, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-7.93, 3.29] | confs~Q_trig corr 0.9092852397325326 | confs~margin corr 0.9999999999999988 | confs best-matching Q col 8
+    decision            n=  1000 base=0.782 | AUROC 0.886 [0.855,0.914] | ECE 0.104 [0.084,0.124] aECE 0.101 | REL 0.0164 [0.0116,0.0241] RES 0.0759 UNC 0.1705 | Brier 0.1077 | gap +0.101 | oor 0.346 | Platt-ECE 0.072 [0.054,0.091]
+    allstates           n=  8539 base=0.381 | AUROC 0.917 [0.903,0.929] | ECE 0.135 [0.121,0.151] aECE 0.137 | REL 0.0270 [0.0212,0.0342] RES 0.1249 UNC 0.2358 | Brier 0.1365 | gap +0.130 | oor 0.249 | Platt-ECE 0.037 [0.028,0.050]
+    decision_triggered  n=   826 base=0.897 | AUROC 0.772 [0.713,0.832] | ECE 0.088 [0.071,0.109] aECE 0.084 | REL 0.0104 [0.0065,0.0177] RES 0.0052 UNC 0.0923 | Brier 0.0942 | gap +0.084 | oor 0.372 | Platt-ECE 0.048 [0.029,0.070]
+    decision_exhausted  n=   174 base=0.236 | AUROC 0.849 [0.769,0.917] | ECE 0.197 [0.154,0.256] aECE 0.205 | REL 0.0602 [0.0428,0.0998] RES 0.0677 UNC 0.1801 | Brier 0.1715 | gap +0.182 | oor 0.224 | Platt-ECE 0.114 [0.093,0.173]
+
+=== final_s1  (config duel_wide, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-8.38, 3.42] | confs~Q_trig corr 0.8870812903677687 | confs~margin corr 0.9999999999999991 | confs best-matching Q col 8
+    decision            n=  1000 base=0.692 | AUROC 0.819 [0.787,0.849] | ECE 0.190 [0.169,0.213] aECE 0.188 | REL 0.0497 [0.0399,0.0645] RES 0.0651 UNC 0.2131 | Brier 0.1937 | gap +0.188 | oor 0.279 | Platt-ECE 0.088 [0.068,0.112]
+    allstates           n=  7653 base=0.336 | AUROC 0.862 [0.845,0.877] | ECE 0.158 [0.138,0.177] aECE 0.158 | REL 0.0341 [0.0264,0.0435] RES 0.0831 UNC 0.2233 | Brier 0.1731 | gap +0.154 | oor 0.200 | Platt-ECE 0.028 [0.022,0.044]
+    decision_triggered  n=   879 base=0.760 | AUROC 0.771 [0.730,0.813] | ECE 0.191 [0.166,0.216] aECE 0.189 | REL 0.0500 [0.0385,0.0637] RES 0.0358 UNC 0.1824 | Brier 0.1920 | gap +0.189 | oor 0.296 | Platt-ECE 0.074 [0.054,0.100]
+    decision_exhausted  n=   121 base=0.198 | AUROC 0.706 [0.594,0.805] | ECE 0.191 [0.147,0.276] aECE 0.188 | REL 0.0687 [0.0456,0.1301] RES 0.0222 UNC 0.1590 | Brier 0.2062 | gap +0.185 | oor 0.157 | Platt-ECE 0.061 [0.043,0.144]
+
+=== final_s42  (config duel_wide, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-10.91, 3.35] | confs~Q_trig corr 0.8368701958975112 | confs~margin corr 0.9999999999999992 | confs best-matching Q col 8
+    decision            n=  1000 base=0.684 | AUROC 0.820 [0.789,0.848] | ECE 0.175 [0.152,0.201] aECE 0.169 | REL 0.0364 [0.0283,0.0500] RES 0.0595 UNC 0.2161 | Brier 0.1897 | gap +0.169 | oor 0.262 | Platt-ECE 0.082 [0.061,0.108]
+    allstates           n=  7811 base=0.343 | AUROC 0.849 [0.831,0.867] | ECE 0.149 [0.128,0.171] aECE 0.149 | REL 0.0301 [0.0228,0.0399] RES 0.0780 UNC 0.2253 | Brier 0.1763 | gap +0.140 | oor 0.193 | Platt-ECE 0.029 [0.023,0.047]
+    decision_triggered  n=   854 base=0.761 | AUROC 0.761 [0.723,0.799] | ECE 0.177 [0.151,0.205] aECE 0.177 | REL 0.0364 [0.0273,0.0499] RES 0.0224 UNC 0.1818 | Brier 0.1923 | gap +0.177 | oor 0.270 | Platt-ECE 0.075 [0.053,0.104]
+    decision_exhausted  n=   146 base=0.233 | AUROC 0.779 [0.687,0.861] | ECE 0.161 [0.114,0.229] aECE 0.165 | REL 0.0384 [0.0245,0.0805] RES 0.0402 UNC 0.1786 | Brier 0.1748 | gap +0.126 | oor 0.212 | Platt-ECE 0.060 [0.053,0.144]
+
+=== final_s7  (config duel_wide, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-12.72, 3.47] | confs~Q_trig corr 0.8292338099753782 | confs~margin corr 0.9999999999999989 | confs best-matching Q col 8
+    decision            n=  1000 base=0.673 | AUROC 0.832 [0.801,0.860] | ECE 0.156 [0.138,0.182] aECE 0.157 | REL 0.0321 [0.0249,0.0442] RES 0.0708 UNC 0.2201 | Brier 0.1791 | gap +0.142 | oor 0.270 | Platt-ECE 0.075 [0.056,0.099]
+    allstates           n=  8414 base=0.345 | AUROC 0.832 [0.813,0.850] | ECE 0.115 [0.097,0.134] aECE 0.115 | REL 0.0178 [0.0128,0.0245] RES 0.0720 UNC 0.2261 | Brier 0.1716 | gap +0.093 | oor 0.222 | Platt-ECE 0.025 [0.019,0.044]
+    decision_triggered  n=   825 base=0.765 | AUROC 0.776 [0.733,0.814] | ECE 0.162 [0.138,0.190] aECE 0.159 | REL 0.0340 [0.0252,0.0481] RES 0.0357 UNC 0.1799 | Brier 0.1750 | gap +0.159 | oor 0.280 | Platt-ECE 0.056 [0.039,0.086]
+    decision_exhausted  n=   175 base=0.240 | AUROC 0.675 [0.585,0.763] | ECE 0.132 [0.103,0.205] aECE 0.151 | REL 0.0305 [0.0198,0.0694] RES 0.0162 UNC 0.1824 | Brier 0.1986 | gap +0.061 | oor 0.223 | Platt-ECE 0.073 [0.049,0.140]
+
+=== iv_aux_head  (config aux_head, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-9.26, 3.45] | confs~Q_trig corr 0.8779557031693199 | confs~margin corr 0.7412126465809037 | confs best-matching Q col 8
+    decision            n=  1000 base=0.685 | AUROC 0.853 [0.827,0.880] | ECE 0.156 [0.134,0.181] aECE 0.155 | REL 0.0312 [0.0232,0.0425] RES 0.0734 UNC 0.2158 | Brier 0.1707 | gap +0.155 | oor 0.329 | Platt-ECE 0.079 [0.061,0.104]
+    allstates           n=  7620 base=0.327 | AUROC 0.881 [0.864,0.896] | ECE 0.135 [0.120,0.153] aECE 0.137 | REL 0.0243 [0.0189,0.0318] RES 0.0913 UNC 0.2199 | Brier 0.1527 | gap +0.127 | oor 0.241 | Platt-ECE 0.025 [0.021,0.041]
+    decision_triggered  n=   861 base=0.769 | AUROC 0.795 [0.759,0.830] | ECE 0.165 [0.139,0.190] aECE 0.165 | REL 0.0331 [0.0248,0.0456] RES 0.0301 UNC 0.1777 | Brier 0.1774 | gap +0.165 | oor 0.333 | Platt-ECE 0.081 [0.060,0.106]
+    decision_exhausted  n=   139 base=0.165 | AUROC 0.825 [0.740,0.899] | ECE 0.101 [0.072,0.165] aECE 0.098 | REL 0.0212 [0.0128,0.0583] RES 0.0303 UNC 0.1381 | Brier 0.1290 | gap +0.096 | oor 0.302 | Platt-ECE 0.060 [0.041,0.134]
+
+=== iv_aux_head_s1  (config aux_head, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-11.21, 4.20] | confs~Q_trig corr 0.862861963377279 | confs~margin corr 0.7443315173509991 | confs best-matching Q col 8
+    decision            n=  1000 base=0.691 | AUROC 0.851 [0.825,0.880] | ECE 0.128 [0.109,0.152] aECE 0.124 | REL 0.0221 [0.0167,0.0331] RES 0.0828 UNC 0.2135 | Brier 0.1518 | gap +0.120 | oor 0.286 | Platt-ECE 0.050 [0.035,0.076]
+    allstates           n=  8728 base=0.346 | AUROC 0.851 [0.833,0.867] | ECE 0.107 [0.087,0.126] aECE 0.106 | REL 0.0158 [0.0108,0.0229] RES 0.0783 UNC 0.2262 | Brier 0.1630 | gap +0.094 | oor 0.232 | Platt-ECE 0.020 [0.017,0.038]
+    decision_triggered  n=   815 base=0.798 | AUROC 0.780 [0.741,0.819] | ECE 0.130 [0.105,0.158] aECE 0.130 | REL 0.0245 [0.0170,0.0362] RES 0.0348 UNC 0.1615 | Brier 0.1500 | gap +0.130 | oor 0.286 | Platt-ECE 0.034 [0.025,0.063]
+    decision_exhausted  n=   185 base=0.222 | AUROC 0.783 [0.707,0.862] | ECE 0.120 [0.088,0.184] aECE 0.120 | REL 0.0264 [0.0151,0.0603] RES 0.0377 UNC 0.1725 | Brier 0.1595 | gap +0.073 | oor 0.286 | Platt-ECE 0.060 [0.049,0.131]
+
+=== iv_aux_head_s7  (config aux_head, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-11.82, 3.38] | confs~Q_trig corr 0.8620375350298828 | confs~margin corr 0.7637892869447748 | confs best-matching Q col 8
+    decision            n=  1000 base=0.700 | AUROC 0.823 [0.794,0.850] | ECE 0.161 [0.140,0.185] aECE 0.160 | REL 0.0324 [0.0253,0.0441] RES 0.0615 UNC 0.2100 | Brier 0.1791 | gap +0.160 | oor 0.266 | Platt-ECE 0.066 [0.049,0.093]
+    allstates           n=  8003 base=0.366 | AUROC 0.845 [0.827,0.862] | ECE 0.125 [0.105,0.145] aECE 0.123 | REL 0.0208 [0.0151,0.0287] RES 0.0791 UNC 0.2320 | Brier 0.1733 | gap +0.113 | oor 0.204 | Platt-ECE 0.018 [0.015,0.036]
+    decision_triggered  n=   853 base=0.778 | AUROC 0.759 [0.717,0.799] | ECE 0.174 [0.151,0.202] aECE 0.173 | REL 0.0380 [0.0288,0.0515] RES 0.0233 UNC 0.1725 | Brier 0.1848 | gap +0.173 | oor 0.273 | Platt-ECE 0.073 [0.053,0.102]
+    decision_exhausted  n=   147 base=0.245 | AUROC 0.829 [0.749,0.899] | ECE 0.093 [0.070,0.169] aECE 0.101 | REL 0.0173 [0.0113,0.0497] RES 0.0570 UNC 0.1849 | Brier 0.1461 | gap +0.086 | oor 0.224 | Platt-ECE 0.062 [0.049,0.134]
+
+=== iv_eta10  (config eta10, eta 10, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-23.43, 11.89] | confs~Q_trig corr 0.8385489346830958 | confs~margin corr 0.9999999999999989 | confs best-matching Q col 8
+    decision            n=  1000 base=0.654 | AUROC 0.825 [0.796,0.853] | ECE 0.109 [0.090,0.136] aECE 0.105 | REL 0.0149 [0.0106,0.0237] RES 0.0714 UNC 0.2263 | Brier 0.1679 | gap +0.105 | oor 0.155 | Platt-ECE 0.055 [0.037,0.081]
+    allstates           n=  8347 base=0.339 | AUROC 0.813 [0.791,0.832] | ECE 0.055 [0.037,0.077] aECE 0.053 | REL 0.0037 [0.0021,0.0075] RES 0.0614 UNC 0.2242 | Brier 0.1657 | gap +0.038 | oor 0.147 | Platt-ECE 0.025 [0.017,0.042]
+    decision_triggered  n=   744 base=0.778 | AUROC 0.743 [0.702,0.786] | ECE 0.131 [0.107,0.159] aECE 0.131 | REL 0.0212 [0.0143,0.0320] RES 0.0243 UNC 0.1726 | Brier 0.1664 | gap +0.131 | oor 0.161 | Platt-ECE 0.037 [0.025,0.066]
+    decision_exhausted  n=   256 base=0.293 | AUROC 0.765 [0.701,0.827] | ECE 0.049 [0.041,0.112] aECE 0.058 | REL 0.0035 [0.0026,0.0196] RES 0.0384 UNC 0.2071 | Brier 0.1722 | gap +0.029 | oor 0.137 | Platt-ECE 0.056 [0.043,0.120]
+
+=== iv_expiry_fail  (config expiry_fail, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-10.92, 3.73] | confs~Q_trig corr 0.7573984990616245 | confs~margin corr 0.9999999999999988 | confs best-matching Q col 8
+    decision            n=  1000 base=0.650 | AUROC 0.839 [0.813,0.865] | ECE 0.145 [0.122,0.169] aECE 0.140 | REL 0.0240 [0.0180,0.0345] RES 0.0789 UNC 0.2275 | Brier 0.1713 | gap +0.136 | oor 0.246 | Platt-ECE 0.052 [0.034,0.080]
+    allstates           n=  7954 base=0.326 | AUROC 0.867 [0.851,0.883] | ECE 0.106 [0.089,0.124] aECE 0.104 | REL 0.0146 [0.0105,0.0206] RES 0.0856 UNC 0.2199 | Brier 0.1481 | gap +0.092 | oor 0.210 | Platt-ECE 0.019 [0.015,0.034]
+    decision_triggered  n=   854 base=0.731 | AUROC 0.787 [0.750,0.819] | ECE 0.154 [0.129,0.180] aECE 0.154 | REL 0.0266 [0.0196,0.0383] RES 0.0436 UNC 0.1968 | Brier 0.1779 | gap +0.154 | oor 0.231 | Platt-ECE 0.048 [0.032,0.078]
+    decision_exhausted  n=   146 base=0.178 | AUROC 0.774 [0.669,0.866] | ECE 0.104 [0.069,0.165] aECE 0.105 | REL 0.0172 [0.0098,0.0453] RES 0.0321 UNC 0.1464 | Brier 0.1324 | gap +0.036 | oor 0.336 | Platt-ECE 0.064 [0.054,0.145]
+
+=== iv_gamma99  (config gamma99, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-3.55, -2.30] | confs~Q_trig corr 0.9998653172104275 | confs~margin corr 0.999999999999999 | confs best-matching Q col 7
+    decision            n=  1000 base=0.438 | AUROC 0.599 [0.569,0.629] | ECE 0.325 [0.295,0.355] aECE 0.325 | REL 0.1074 [0.0885,0.1281] RES 0.0018 UNC 0.2462 | Brier 0.3511 | gap -0.325 | oor 0.000 | Platt-ECE 0.039 [0.021,0.072]
+    allstates           n=  2378 base=0.247 | AUROC 0.783 [0.766,0.800] | ECE 0.172 [0.150,0.195] aECE 0.172 | REL 0.0464 [0.0369,0.0571] RES 0.0257 UNC 0.1859 | Brier 0.2034 | gap -0.172 | oor 0.060 | Platt-ECE 0.015 [0.009,0.033]
+    decision_triggered  n=   999 base=0.438 | AUROC 0.599 [0.570,0.629] | ECE 0.326 [0.297,0.358] aECE 0.326 | REL 0.1075 [0.0893,0.1302] RES 0.0017 UNC 0.2462 | Brier 0.3514 | gap -0.326 | oor 0.000 | Platt-ECE 0.018 [0.014,0.054]
+    decision_exhausted  (too few / single-class)
+
+=== iv_pbrs  (config pbrs, eta 3, shaping pbrs, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-7.02, 0.47] | confs~Q_trig corr 0.8687337710986252 | confs~margin corr 0.9999999999999992 | confs best-matching Q col 8
+    decision            n=  1000 base=0.643 | AUROC 0.796 [0.763,0.827] | (no closed-form mapping: PBRS) | Platt-ECE 0.043 [0.033,0.076]
+    allstates           n=  7378 base=0.295 | AUROC 0.743 [0.710,0.774] | (no closed-form mapping: PBRS) | Platt-ECE 0.033 [0.026,0.057]
+    decision_triggered  n=   771 base=0.774 | AUROC 0.667 [0.619,0.709] | (no closed-form mapping: PBRS) | Platt-ECE 0.031 [0.018,0.064]
+    decision_exhausted  n=   229 base=0.201 | AUROC 0.561 [0.462,0.661] | (no closed-form mapping: PBRS) | Platt-ECE 0.036 [0.015,0.094]
+
+=== iv_steppen005  (config steppen005, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-9.91, 3.57] | confs~Q_trig corr 0.8117500171112337 | confs~margin corr 0.9999999999999991 | confs best-matching Q col 8
+    decision            n=  1000 base=0.665 | AUROC 0.828 [0.797,0.858] | ECE 0.192 [0.169,0.217] aECE 0.183 | REL 0.0488 [0.0395,0.0641] RES 0.0657 UNC 0.2228 | Brier 0.2019 | gap +0.183 | oor 0.280 | Platt-ECE 0.103 [0.081,0.130]
+    allstates           n=  7533 base=0.340 | AUROC 0.836 [0.817,0.855] | ECE 0.151 [0.131,0.171] aECE 0.150 | REL 0.0290 [0.0218,0.0381] RES 0.0717 UNC 0.2245 | Brier 0.1805 | gap +0.139 | oor 0.196 | Platt-ECE 0.025 [0.018,0.042]
+    decision_triggered  n=   864 base=0.730 | AUROC 0.796 [0.759,0.831] | ECE 0.199 [0.173,0.226] aECE 0.199 | REL 0.0535 [0.0414,0.0702] RES 0.0415 UNC 0.1970 | Brier 0.2050 | gap +0.199 | oor 0.288 | Platt-ECE 0.071 [0.050,0.101]
+    decision_exhausted  n=   136 base=0.250 | AUROC 0.738 [0.641,0.825] | ECE 0.157 [0.106,0.230] aECE 0.147 | REL 0.0361 [0.0224,0.0824] RES 0.0387 UNC 0.1875 | Brier 0.1825 | gap +0.085 | oor 0.228 | Platt-ECE 0.067 [0.048,0.151]
+
+=== iv_steppen02  (config steppen02, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-9.77, 3.61] | confs~Q_trig corr 0.8479503182974681 | confs~margin corr 0.9999999999999991 | confs best-matching Q col 8
+    decision            n=  1000 base=0.687 | AUROC 0.802 [0.771,0.832] | ECE 0.187 [0.165,0.214] aECE 0.175 | REL 0.0428 [0.0337,0.0563] RES 0.0526 UNC 0.2150 | Brier 0.2014 | gap +0.175 | oor 0.231 | Platt-ECE 0.079 [0.060,0.106]
+    allstates           n=  6529 base=0.337 | AUROC 0.823 [0.804,0.843] | ECE 0.115 [0.097,0.135] aECE 0.112 | REL 0.0175 [0.0130,0.0240] RES 0.0672 UNC 0.2234 | Brier 0.1729 | gap +0.084 | oor 0.223 | Platt-ECE 0.023 [0.017,0.039]
+    decision_triggered  n=   926 base=0.729 | AUROC 0.769 [0.735,0.800] | ECE 0.186 [0.162,0.214] aECE 0.183 | REL 0.0430 [0.0327,0.0582] RES 0.0331 UNC 0.1976 | Brier 0.2039 | gap +0.183 | oor 0.230 | Platt-ECE 0.069 [0.048,0.096]
+    decision_exhausted  n=    74 base=0.162 | AUROC 0.613 [0.429,0.791] | ECE 0.202 [0.146,0.289] aECE 0.167 | REL 0.0593 [0.0391,0.1129] RES 0.0215 UNC 0.1359 | Brier 0.1706 | gap +0.076 | oor 0.243 | Platt-ECE 0.027 [0.023,0.125]
+
+=== iv_steppen02_s1  (config steppen02, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-18.47, 3.42] | confs~Q_trig corr 0.8214474404723205 | confs~margin corr 0.999999999999999 | confs best-matching Q col 8
+    decision            n=  1000 base=0.707 | AUROC 0.807 [0.775,0.834] | ECE 0.149 [0.130,0.175] aECE 0.140 | REL 0.0272 [0.0211,0.0386] RES 0.0589 UNC 0.2072 | Brier 0.1737 | gap +0.140 | oor 0.260 | Platt-ECE 0.058 [0.038,0.085]
+    allstates           n=  6753 base=0.339 | AUROC 0.827 [0.807,0.849] | ECE 0.104 [0.088,0.122] aECE 0.106 | REL 0.0150 [0.0112,0.0209] RES 0.0711 UNC 0.2240 | Brier 0.1673 | gap +0.069 | oor 0.237 | Platt-ECE 0.025 [0.017,0.041]
+    decision_triggered  n=   911 base=0.755 | AUROC 0.769 [0.732,0.806] | ECE 0.153 [0.132,0.179] aECE 0.152 | REL 0.0284 [0.0214,0.0386] RES 0.0375 UNC 0.1849 | Brier 0.1738 | gap +0.152 | oor 0.259 | Platt-ECE 0.048 [0.031,0.073]
+    decision_exhausted  n=    89 base=0.213 | AUROC 0.669 [0.527,0.799] | ECE 0.121 [0.089,0.218] aECE 0.135 | REL 0.0276 [0.0167,0.0772] RES 0.0212 UNC 0.1679 | Brier 0.1723 | gap +0.013 | oor 0.270 | Platt-ECE 0.165 [0.100,0.251]
+
+=== iv_steppen02_s7  (config steppen02, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-9.75, 4.03] | confs~Q_trig corr 0.8312569571290366 | confs~margin corr 0.9999999999999994 | confs best-matching Q col 8
+    decision            n=  1000 base=0.697 | AUROC 0.826 [0.797,0.854] | ECE 0.142 [0.119,0.166] aECE 0.135 | REL 0.0255 [0.0184,0.0372] RES 0.0676 UNC 0.2112 | Brier 0.1673 | gap +0.135 | oor 0.273 | Platt-ECE 0.065 [0.045,0.089]
+    allstates           n=  6918 base=0.334 | AUROC 0.839 [0.819,0.860] | ECE 0.100 [0.084,0.116] aECE 0.099 | REL 0.0135 [0.0095,0.0187] RES 0.0741 UNC 0.2226 | Brier 0.1613 | gap +0.074 | oor 0.243 | Platt-ECE 0.021 [0.017,0.038]
+    decision_triggered  n=   903 base=0.745 | AUROC 0.797 [0.762,0.834] | ECE 0.149 [0.125,0.176] aECE 0.149 | REL 0.0284 [0.0211,0.0409] RES 0.0498 UNC 0.1898 | Brier 0.1665 | gap +0.149 | oor 0.268 | Platt-ECE 0.043 [0.029,0.070]
+    decision_exhausted  n=    97 base=0.247 | AUROC 0.741 [0.629,0.845] | ECE 0.095 [0.081,0.197] aECE 0.087 | REL 0.0238 [0.0144,0.0721] RES 0.0364 UNC 0.1862 | Brier 0.1747 | gap +0.003 | oor 0.320 | Platt-ECE 0.060 [0.048,0.162]
+
+=== no_history  (config no_history, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-13.27, 3.27] | confs~Q_trig corr 0.883093295404114 | confs~margin corr 0.999999999999999 | confs best-matching Q col 8
+    decision            n=  1000 base=0.615 | AUROC 0.846 [0.819,0.870] | ECE 0.190 [0.167,0.217] aECE 0.189 | REL 0.0455 [0.0356,0.0593] RES 0.0799 UNC 0.2368 | Brier 0.1990 | gap +0.182 | oor 0.271 | Platt-ECE 0.068 [0.051,0.094]
+    allstates           n=  9586 base=0.344 | AUROC 0.842 [0.820,0.863] | ECE 0.173 [0.150,0.197] aECE 0.173 | REL 0.0383 [0.0288,0.0506] RES 0.0761 UNC 0.2258 | Brier 0.1870 | gap +0.158 | oor 0.212 | Platt-ECE 0.040 [0.029,0.062]
+    decision_triggered  n=   662 base=0.763 | AUROC 0.774 [0.726,0.820] | ECE 0.194 [0.166,0.225] aECE 0.194 | REL 0.0496 [0.0361,0.0662] RES 0.0274 UNC 0.1809 | Brier 0.1986 | gap +0.194 | oor 0.311 | Platt-ECE 0.042 [0.029,0.073]
+    decision_exhausted  n=   338 base=0.325 | AUROC 0.804 [0.750,0.854] | ECE 0.183 [0.145,0.227] aECE 0.189 | REL 0.0415 [0.0290,0.0667] RES 0.0600 UNC 0.2195 | Brier 0.1999 | gap +0.157 | oor 0.192 | Platt-ECE 0.036 [0.036,0.098]
+
+=== prior_gradcam  (config prior_gradcam, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-9.48, 3.95] | confs~Q_trig corr 0.7661470039115847 | confs~margin corr 0.9999999999999983 | confs best-matching Q col 8
+    decision            n=  1000 base=0.597 | AUROC 0.854 [0.829,0.880] | ECE 0.164 [0.140,0.187] aECE 0.163 | REL 0.0396 [0.0303,0.0525] RES 0.0968 UNC 0.2406 | Brier 0.1811 | gap +0.154 | oor 0.269 | Platt-ECE 0.058 [0.042,0.085]
+    allstates           n=  8919 base=0.299 | AUROC 0.845 [0.825,0.864] | ECE 0.118 [0.101,0.136] aECE 0.121 | REL 0.0190 [0.0140,0.0256] RES 0.0708 UNC 0.2096 | Brier 0.1571 | gap +0.102 | oor 0.217 | Platt-ECE 0.016 [0.013,0.034]
+    decision_triggered  n=   744 base=0.745 | AUROC 0.764 [0.721,0.806] | ECE 0.188 [0.160,0.218] aECE 0.186 | REL 0.0524 [0.0396,0.0703] RES 0.0387 UNC 0.1902 | Brier 0.2008 | gap +0.186 | oor 0.270 | Platt-ECE 0.058 [0.041,0.089]
+    decision_exhausted  n=   256 base=0.168 | AUROC 0.771 [0.668,0.857] | ECE 0.106 [0.075,0.152] aECE 0.105 | REL 0.0173 [0.0103,0.0372] RES 0.0325 UNC 0.1398 | Brier 0.1238 | gap +0.059 | oor 0.266 | Platt-ECE 0.043 [0.030,0.097]
+
+=== prior_layercam  (config prior_layercam, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-13.11, 3.81] | confs~Q_trig corr 0.8079048167062405 | confs~margin corr 0.999999999999999 | confs best-matching Q col 8
+    decision            n=  1000 base=0.672 | AUROC 0.824 [0.794,0.852] | ECE 0.150 [0.130,0.176] aECE 0.150 | REL 0.0281 [0.0217,0.0382] RES 0.0676 UNC 0.2204 | Brier 0.1767 | gap +0.140 | oor 0.284 | Platt-ECE 0.032 [0.022,0.060]
+    allstates           n=  8277 base=0.342 | AUROC 0.836 [0.818,0.853] | ECE 0.118 [0.103,0.137] aECE 0.119 | REL 0.0185 [0.0138,0.0252] RES 0.0732 UNC 0.2250 | Brier 0.1697 | gap +0.096 | oor 0.227 | Platt-ECE 0.029 [0.020,0.043]
+    decision_triggered  n=   831 base=0.762 | AUROC 0.759 [0.719,0.798] | ECE 0.160 [0.135,0.187] aECE 0.158 | REL 0.0302 [0.0227,0.0419] RES 0.0294 UNC 0.1815 | Brier 0.1772 | gap +0.158 | oor 0.285 | Platt-ECE 0.052 [0.037,0.084]
+    decision_exhausted  n=   169 base=0.231 | AUROC 0.725 [0.617,0.814] | ECE 0.122 [0.090,0.198] aECE 0.130 | REL 0.0276 [0.0190,0.0639] RES 0.0312 UNC 0.1775 | Brier 0.1743 | gap +0.055 | oor 0.278 | Platt-ECE 0.068 [0.042,0.131]
+
+=== prior_none  (config prior_none, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-10.28, 3.87] | confs~Q_trig corr 0.7676119551178113 | confs~margin corr 0.9999999999999989 | confs best-matching Q col 8
+    decision            n=  1000 base=0.576 | AUROC 0.854 [0.830,0.878] | ECE 0.178 [0.154,0.204] aECE 0.173 | REL 0.0382 [0.0294,0.0506] RES 0.0848 UNC 0.2442 | Brier 0.1935 | gap +0.153 | oor 0.285 | Platt-ECE 0.067 [0.052,0.095]
+    allstates           n=  9503 base=0.293 | AUROC 0.821 [0.801,0.838] | ECE 0.113 [0.097,0.129] aECE 0.113 | REL 0.0172 [0.0126,0.0229] RES 0.0590 UNC 0.2073 | Brier 0.1651 | gap +0.084 | oor 0.238 | Platt-ECE 0.023 [0.017,0.039]
+    decision_triggered  n=   716 base=0.729 | AUROC 0.782 [0.747,0.819] | ECE 0.197 [0.165,0.228] aECE 0.197 | REL 0.0450 [0.0330,0.0615] RES 0.0292 UNC 0.1975 | Brier 0.2077 | gap +0.197 | oor 0.272 | Platt-ECE 0.063 [0.044,0.096]
+    decision_exhausted  n=   284 base=0.190 | AUROC 0.704 [0.628,0.783] | ECE 0.130 [0.097,0.174] aECE 0.135 | REL 0.0225 [0.0145,0.0436] RES 0.0183 UNC 0.1540 | Brier 0.1575 | gap +0.043 | oor 0.317 | Platt-ECE 0.039 [0.026,0.087]
+
+=== single_dqn  (config single_dqn, eta 3, shaping sign, selfcheck OK, k==n 1.000, action offset +1, greedy(last step, offset-corrected) 1.000, trig col 8 (1.000))
+    Q_trig range [-9.58, 3.23] | confs~Q_trig corr 0.8661499727294285 | confs~margin corr 0.9999999999999988 | confs best-matching Q col 8
+    decision            n=  1000 base=0.674 | AUROC 0.807 [0.779,0.836] | ECE 0.191 [0.169,0.215] aECE 0.176 | REL 0.0402 [0.0325,0.0526] RES 0.0549 UNC 0.2197 | Brier 0.2017 | gap +0.173 | oor 0.277 | Platt-ECE 0.057 [0.042,0.085]
+    allstates           n=  8432 base=0.356 | AUROC 0.853 [0.834,0.869] | ECE 0.150 [0.127,0.171] aECE 0.150 | REL 0.0289 [0.0210,0.0386] RES 0.0821 UNC 0.2293 | Brier 0.1747 | gap +0.138 | oor 0.202 | Platt-ECE 0.024 [0.017,0.043]
+    decision_triggered  n=   804 base=0.766 | AUROC 0.736 [0.696,0.776] | ECE 0.195 [0.167,0.221] aECE 0.194 | REL 0.0426 [0.0324,0.0569] RES 0.0146 UNC 0.1792 | Brier 0.2031 | gap +0.194 | oor 0.303 | Platt-ECE 0.052 [0.031,0.082]
+    decision_exhausted  n=   196 base=0.296 | AUROC 0.728 [0.636,0.807] | ECE 0.183 [0.142,0.242] aECE 0.172 | REL 0.0404 [0.0270,0.0755] RES 0.0522 UNC 0.2084 | Brier 0.1961 | gap +0.089 | oor 0.168 | Platt-ECE 0.094 [0.064,0.155]
+
+
+COMPACT TABLE  (decision set = one stop decision per episode; 95% bootstrap CIs over images)
+tag                           AUROC                ECE      REL      RES     gap    oor  PlattECE | allst ECE allst AUROC
+control                       0.826 0.191 [0.168,0.215]   0.0448   0.0616  +0.188  0.223     0.084 |     0.142       0.848
+control_s1                    0.818 0.189 [0.164,0.214]   0.0430   0.0606  +0.165  0.242     0.071 |     0.139       0.826
+control_s7                    0.837 0.160 [0.138,0.185]   0.0321   0.0694  +0.149  0.248     0.089 |     0.130       0.855
+desc_dinov2                   0.889 0.088 [0.070,0.107]   0.0133   0.0679  +0.087  0.355     0.048 |     0.124       0.922
+desc_dinov2_none              0.893 0.089 [0.074,0.110]   0.0121   0.0816  +0.089  0.352     0.048 |     0.127       0.915
+desc_dinov2_none_s1           0.890 0.096 [0.080,0.118]   0.0168   0.0840  +0.092  0.396     0.063 |     0.137       0.905
+desc_dinov2_none_s7           0.868 0.114 [0.094,0.135]   0.0189   0.0816  +0.112  0.332     0.028 |     0.142       0.911
+desc_dinov2_s1                0.868 0.094 [0.077,0.113]   0.0144   0.0711  +0.083  0.377     0.043 |     0.128       0.912
+desc_dinov2_s7                0.862 0.111 [0.094,0.130]   0.0196   0.0789  +0.110  0.368     0.032 |     0.139       0.924
+desc_dinov2_selfattn_s1       0.881 0.109 [0.092,0.130]   0.0235   0.0794  +0.106  0.333     0.051 |     0.123       0.910
+desc_dinov2_selfattn_s42      0.851 0.101 [0.083,0.122]   0.0132   0.0651  +0.096  0.322     0.032 |     0.127       0.922
+desc_dinov2_selfattn_s7       0.855 0.104 [0.086,0.123]   0.0187   0.0734  +0.104  0.342     0.046 |     0.125       0.916
+desc_vgg_none                 0.854 0.178 [0.155,0.203]   0.0382   0.0848  +0.153  0.285     0.061 |     0.113       0.821
+dinov2_gradcam                0.860 0.119 [0.101,0.142]   0.0215   0.0699  +0.113  0.349     0.038 |     0.128       0.908
+dinov2_nohist                 0.908 0.101 [0.084,0.122]   0.0162   0.0912  +0.093  0.335     0.035 |     0.118       0.906
+dinov2_singleq                0.886 0.104 [0.084,0.124]   0.0164   0.0759  +0.101  0.346     0.072 |     0.135       0.917
+final_s1                      0.819 0.190 [0.169,0.213]   0.0497   0.0651  +0.188  0.279     0.088 |     0.158       0.862
+final_s42                     0.820 0.175 [0.152,0.201]   0.0364   0.0595  +0.169  0.262     0.082 |     0.149       0.849
+final_s7                      0.832 0.156 [0.138,0.182]   0.0321   0.0708  +0.142  0.270     0.075 |     0.115       0.832
+iv_aux_head                   0.853 0.156 [0.134,0.181]   0.0312   0.0734  +0.155  0.329     0.079 |     0.135       0.881
+iv_aux_head_s1                0.851 0.128 [0.109,0.152]   0.0221   0.0828  +0.120  0.286     0.050 |     0.107       0.851
+iv_aux_head_s7                0.823 0.161 [0.140,0.185]   0.0324   0.0615  +0.160  0.266     0.066 |     0.125       0.845
+iv_eta10                      0.825 0.109 [0.090,0.136]   0.0149   0.0714  +0.105  0.155     0.055 |     0.055       0.813
+iv_expiry_fail                0.839 0.145 [0.122,0.169]   0.0240   0.0789  +0.136  0.246     0.052 |     0.106       0.867
+iv_gamma99                    0.599 0.325 [0.295,0.355]   0.1074   0.0018  -0.325  0.000     0.039 |     0.172       0.783
+iv_pbrs                       0.796 (PBRS: no mapping)                                      0.043 |                 0.743
+iv_steppen005                 0.828 0.192 [0.169,0.217]   0.0488   0.0657  +0.183  0.280     0.103 |     0.151       0.836
+iv_steppen02                  0.802 0.187 [0.165,0.214]   0.0428   0.0526  +0.175  0.231     0.079 |     0.115       0.823
+iv_steppen02_s1               0.807 0.149 [0.130,0.175]   0.0272   0.0589  +0.140  0.260     0.058 |     0.104       0.827
+iv_steppen02_s7               0.826 0.142 [0.119,0.166]   0.0255   0.0676  +0.135  0.273     0.065 |     0.100       0.839
+no_history                    0.846 0.190 [0.167,0.217]   0.0455   0.0799  +0.182  0.271     0.068 |     0.173       0.842
+prior_gradcam                 0.854 0.164 [0.140,0.187]   0.0396   0.0968  +0.154  0.269     0.058 |     0.118       0.845
+prior_layercam                0.824 0.150 [0.130,0.176]   0.0281   0.0676  +0.140  0.284     0.032 |     0.118       0.836
+prior_none                    0.854 0.178 [0.154,0.204]   0.0382   0.0848  +0.153  0.285     0.067 |     0.113       0.821
+single_dqn                    0.807 0.191 [0.169,0.215]   0.0402   0.0549  +0.173  0.277     0.057 |     0.150       0.853

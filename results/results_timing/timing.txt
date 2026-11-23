@@ -1,0 +1,19 @@
+TIMING v4 -- NVIDIA A100-SXM4-80GB | torch 2.4.1+cu121 CUDA 12.1 | Linux-5.4.0-190-generic-x86_64-with-glibc2.29 | CPU x86_64
+rounds (ROI ms, per-crop ms, speedup): 19.9, 43.2, 2.17x; 19.7, 43.4, 2.20x; 19.7, 43.0, 2.18x
+TIMING v3-logic | batch size 1 | n=100 test images over classes ['aeroplane', 'bicycle', 'cat', 'dog', 'horse']
+CPU load average (1/5/15 min) at start 22.9/20.4/19.2, end 23.7/20.9/19.4  | CPUs: 256
+GPU utilisation by other processes must be ~0. If CPU load is high, trust section (b) over (a).
+
+(a) END-TO-END wall clock, VGG-16 descriptor, plain head (control), incl. CPU preprocessing,
+    classifier and DINO prior:
+  ROI-cached episode :   19.73 +/-  5.66 ms  steps 7.9  backbone fwd/episode 1.0  mIoU(subset) 0.5761
+  per-crop   episode :   42.95 +/- 24.32 ms  steps 8.2  backbone fwd/episode 8.2  mIoU(subset) 0.5642
+  speedup            : 2.18x
+
+(b) GPU COMPUTE ONLY (CUDA events, pre-transformed 224x224 tensors, 50 reps):
+  VGG-16 conv backbone (descriptor)  :    1.11 +/-  0.02 ms
+  VGG-16 full (5-way classifier)     :    1.41 +/-  0.03 ms
+  DINO ViT-S/16 attention (prior)    :    4.11 +/-  0.05 ms
+  DINOv2 ViT-S/14 tokens (descriptor):    5.20 +/-  0.05 ms
+  Grad-CAM (VGG fwd+bwd)             :    4.90 +/-  0.21 ms
+  one policy step (ROI pool + head)  :    0.63 +/-  0.02 ms

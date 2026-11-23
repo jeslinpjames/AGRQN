@@ -1,0 +1,44 @@
+[
+  {
+    "tag": "desc_vgg_none_s1",
+    "config": "desc_vgg_none",
+    "cache": "feat_cache",
+    "pred_miou": 0.5426634695875329,
+    "pred_corloc": 0.622,
+    "true_miou": 0.5439019108046849,
+    "true_corloc": 0.625,
+    "reported_miou": 0.5426634695875329,
+    "reported_corloc": 0.622,
+    "clf_acc": 0.986,
+    "n_misclassified": 14,
+    "selfcheck": "OK"
+  },
+  {
+    "tag": "desc_vgg_none_s7",
+    "config": "desc_vgg_none",
+    "cache": "feat_cache",
+    "pred_miou": 0.5312352689810673,
+    "pred_corloc": 0.604,
+    "true_miou": 0.5332044752593855,
+    "true_corloc": 0.608,
+    "reported_miou": 0.5312352689810673,
+    "reported_corloc": 0.604,
+    "clf_acc": 0.986,
+    "n_misclassified": 14,
+    "selfcheck": "OK"
+  },
+  {
+    "tag": "desc_vgg_none",
+    "config": "desc_vgg_none",
+    "cache": "feat_cache",
+    "pred_miou": 0.5194514100461,
+    "pred_corloc": 0.565,
+    "true_miou": 0.5203309587588316,
+    "true_corloc": 0.565,
+    "reported_miou": 0.5194514100461,
+    "reported_corloc": 0.565,
+    "clf_acc": 0.986,
+    "n_misclassified": 14,
+    "selfcheck": "OK"
+  }
+]
