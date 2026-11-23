@@ -7,8 +7,7 @@ already have everything they need from precache.py.
 Grad-CAM and LayerCAM are class-conditional -- they backprop from a chosen class logit -- so
 we store one map per (image, class): with 5 classes and 2 methods that is 10 maps of
 224x224 fp16 per image, written to <name>_cam.npz alongside the existing <name>.npz (roughly
-1 MB/image). DINO needs none of this: it is class-agnostic, one map per image, which is
-precisely the independence property the paper argues for.
+1 MB/image). DINO needs none of this: it is class-agnostic, one map per image.
 
 Usage:
     python scripts/precache_cams.py --voc ./data/VOC2012_train_val \

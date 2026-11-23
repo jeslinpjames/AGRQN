@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-"""Statistical tests for the "exhaustion rate == failure rate" calibration claim.
+"""Discrimination tests for the stop decision (paper: Section 4.6).
+
+These tests show that triggered and budget-exhausted episodes differ in success rate
+(discrimination). They do not test probability calibration; for that, see
+calib_qvalues.py and calib_analysis.py (paper: Appendix E).
 
 Runs entirely on CPU from an existing *_records.json.gz (written by train_agrqn.py or
 reevaluate_checkpoints.py) -- no retraining, no GPU. Each record needs `cls_true`,
@@ -236,7 +240,7 @@ def main():
     log(f"observed PPV gap = {a['observed_gap']:.4f}")
     log(f"permutation p-value (B={B_PERM}) = {a['p_value']:.5f}")
     log(f"{'supports' if a['p_value'] < 0.001 else 'does not clearly support'} "
-        f"the calibrated-rejection claim\n")
+        f"that the stop decision is discriminative of success\n")
 
     log("--- Test B: Brier reliability/resolution decomposition ---")
     b = test_B(recs, args.iou_key)

@@ -74,11 +74,12 @@ def main():
         f.write("## Best-checkpoint results\n\n")
         f.write(show.drop(columns=["ckpt"]).to_markdown(index=False, floatfmt=".3f"))
         f.write("\n\n## The `gap` column\n\n")
-        f.write("`gap` = exhaust - (1 - CorLoc). If `gap` is near 0, the agent triggers "
-                "exactly when it succeeds, and the exhaustion rate is the failure rate -- a "
-                "calibrated rejection signal, not a stopping bug. A large negative `gap` "
-                "means the agent was forced to commit to boxes it knew were bad: check "
-                "whether `trigger_ppv` also collapsed in that row.\n\n")
+        f.write("`gap` = exhaust - (1 - CorLoc). A gap near 0 means the exhaustion rate "
+                "is close to the failure rate. It does not mean the agent triggers exactly "
+                "when it succeeds: some triggered episodes fail and some exhausted ones "
+                "succeed (compare `trigger_ppv`). A large negative `gap` means the agent "
+                "was pushed to commit to boxes it would otherwise have abandoned: check "
+                "whether `trigger_ppv` also fell in that row.\n\n")
         f.write("## All checkpoints\n\n")
         f.write(df.to_markdown(index=False, floatfmt=".3f"))
         f.write("\n")

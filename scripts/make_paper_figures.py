@@ -6,18 +6,18 @@ Usage:
     python scripts/make_paper_figures.py --results ./results/results_final --out ./paper_assets
 
 Outputs (300 dpi PDF + PNG, plus .tex table fragments) into --out:
-    fig_prior_arc        the prior-redundancy result (bar + attenuation)
-    fig_trigger          exhaustion=failure diagonal + six failed interventions
+    fig_prior_arc        the prior study and the attenuation of the prior's gain (Figure 3)
+    fig_trigger          exhaustion vs. failure rate, and the reward interventions (Figure 4)
     fig_failures         failure taxonomy, VGG vs. DINOv2 descriptor
     fig_size             final IoU vs. object size, with Spearman rho
-    fig_calibration      trigger confidence vs. realized IoU
+    fig_calibration      trigger confidence vs. realised IoU (descriptive only)
     fig_training         validation mIoU / exhaustion across epochs
     tab_headline.tex     per-class table for the best model
     tab_models.tex       the 4 descriptor x prior configs
     tab_priors.tex       the prior study (none/gradcam/layercam/dino)
-    tab_trigger.tex      six reward interventions
+    tab_trigger.tex      the seven reward interventions, mean over three seeds
     tab_ablation.tex     retraining ablations, both descriptors
-    tab_seeds.tex        the seed studies
+    tab_seeds.tex        per-seed mIoU for every seeded configuration
 """
 import argparse
 import glob
@@ -72,58 +72,106 @@ def m(T, k, f="miou"):
     return T[k][f] if k in T else float("nan")
 
 
+# Seed groups used in the paper (three seeds each: 42, 1, 7).
+SEEDS = {
+    "vgg_none": ["desc_vgg_none", "desc_vgg_none_s1", "desc_vgg_none_s7"],
+    "vgg_dino": ["final_s42", "final_s1", "final_s7"],
+    "dv2_none": ["desc_dinov2_none", "desc_dinov2_none_s1", "desc_dinov2_none_s7"],
+    "dv2_dino": ["desc_dinov2", "desc_dinov2_s1", "desc_dinov2_s7"],
+    "dv2_self": ["desc_dinov2_selfattn_s42", "desc_dinov2_selfattn_s1",
+                 "desc_dinov2_selfattn_s7"],
+    "control": ["control", "control_s1", "control_s7"],
+}
+# The seven reward-level interventions (plain head, same protocol as `control`).
+INTERVENTIONS = [("steppen005", "step $-0.05$"), ("steppen02", "step $-0.2$"),
+                 ("gamma99", "$\\gamma{=}0.99$"), ("eta10", "$\\eta{=}10$"),
+                 ("pbrs", "PBRS"), ("expiry_fail", "expiry fail"), ("aux_head", "aux head")]
+
+
+def iv_tags(name):
+    # A trailing "r" marks a rerun of a seed whose first run was interrupted; only the
+    # completed run has a *_test.json, so at most one of each pair is present.
+    return [f"iv_{name}", f"iv_{name}_s1", f"iv_{name}_s1r", f"iv_{name}_s7", f"iv_{name}_s7r"]
+
+
+def ms(T, keys, f="miou"):
+    """Mean and sample std over the seeds that are present."""
+    v = np.array([T[k][f] for k in keys if k in T])
+    if len(v) == 0:
+        return float("nan"), float("nan"), 0
+    return float(v.mean()), float(v.std(ddof=1)) if len(v) > 1 else float("nan"), len(v)
+
+
+def se_diff(T, a, b):
+    """Standard error of the difference between two seed means."""
+    _, sa, na = ms(T, a); _, sb, nb = ms(T, b)
+    return float(np.sqrt(sa ** 2 / max(na, 1) + sb ** 2 / max(nb, 1)))
+
+
 # ================================================================ FIGURES
 def fig_prior_arc(T, out):
+    """Figure 3: (a) the prior study with the VGG-16 descriptor, (b) the gain from the DINO
+    prior for each descriptor, plus the same-pass DINOv2 prior and Grad-CAM with DINOv2."""
     fig, ax = plt.subplots(1, 2, figsize=(9, 3.6))
+    base = ms(T, SEEDS["vgg_none"])[0]
     labs = ["none", "Grad-CAM", "LayerCAM", "DINO"]
-    keys = ["prior_none", "prior_gradcam", "prior_layercam", "final_s42"]
-    v = [m(T, k) for k in keys]
+    v = [base, m(T, "prior_gradcam"), m(T, "prior_layercam"), ms(T, SEEDS["vgg_dino"])[0]]
     cols = [GREY, RED, ORANGE, GREEN]
     ax[0].bar(labs, v, color=cols, edgecolor="black", linewidth=0.5)
-    ax[0].axhline(v[0], ls="--", c="black", lw=1)
+    ax[0].axhline(base, ls="--", c="black", lw=1)
     ax[0].set_ylim(0.50, 0.60); ax[0].set_ylabel("mIoU")
-    for i, y in enumerate(v):
-        ax[0].annotate(f"{y-v[0]:+.3f}", (i, y), ha="center", va="bottom", fontsize=9)
-    ax[0].set_title("(a) The prior study (VGG descriptor)\ndashed = no-prior control")
+    for i, y in enumerate(v[1:], 1):
+        ax[0].annotate(f"{y - base:+.3f}", (i, y), ha="center", va="bottom", fontsize=9)
+    ax[0].set_title("(a) Prior study (VGG-16 descriptor)\ndashed = no-prior mean (3 seeds)")
 
-    # attenuation: the DINO-prior gain should shrink once the descriptor already carries the
-    # same information (DINOv2 descriptor), per the paper's redundancy argument.
-    vg = np.mean([m(T, k) for k in ["final_s42", "final_s1", "final_s7"]])
-    vn = m(T, "prior_none")
-    dv = np.mean([m(T, k) for k in ["desc_dinov2", "desc_dinov2_s1", "desc_dinov2_s7"]])
-    dn = np.mean([m(T, k) for k in ["desc_dinov2_none", "desc_dinov2_none_s1", "desc_dinov2_none_s7"]])
-    gains = [vg - vn, dv - dn]
-    errs = [0.005, 0.009]
-    ax[1].bar(["VGG-16\n(supervised)", "DINOv2\n(self-supervised)"], gains,
-              yerr=errs, capsize=5, color=[GREEN, BLUE], edgecolor="black", linewidth=0.5)
+    dn = SEEDS["dv2_none"]
+    labs_b = ["VGG-16\nDINO prior", "DINOv2\nDINO prior", "DINOv2\nsame-pass", "DINOv2\nGrad-CAM"]
+    gains = [ms(T, SEEDS["vgg_dino"])[0] - base,
+             ms(T, SEEDS["dv2_dino"])[0] - ms(T, dn)[0],
+             ms(T, SEEDS["dv2_self"])[0] - ms(T, dn)[0],
+             m(T, "dinov2_gradcam") - ms(T, dn)[0]]
+    errs = [se_diff(T, SEEDS["vgg_dino"], SEEDS["vgg_none"]),
+            se_diff(T, SEEDS["dv2_dino"], dn), se_diff(T, SEEDS["dv2_self"], dn),
+            ms(T, dn)[1]]
+    ax[1].bar(labs_b, gains, yerr=errs, capsize=4, color=[GREEN, BLUE, BLUE, RED],
+              edgecolor="black", linewidth=0.5)
     for i, gg in enumerate(gains):
-        ax[1].annotate(f"+{gg:.3f}", (i, gg), ha="center", va="bottom", fontsize=10)
-    ax[1].set_ylabel("mIoU gain from the DINO prior")
-    ax[1].set_title(f"(b) Attenuation: {100*(1-gains[1]/gains[0]):.0f}%\n"
-                    "prior helps less as the descriptor improves")
+        ax[1].annotate(f"{gg:+.3f}", (i, gg), ha="center", va="bottom", fontsize=9)
+    ax[1].axhline(0, c="black", lw=0.8)
+    ax[1].set_ylabel("mIoU gain over no prior"); ax[1].tick_params(axis="x", labelsize=8)
+    att = 100 * (1 - gains[1] / gains[0]) if gains[0] else float("nan")
+    ax[1].set_title(f"(b) Gain from the prior; attenuation {att:.0f}%")
     fig.tight_layout(); save(fig, out, "fig_prior_arc")
 
 
 def fig_trigger(T, out):
-    fig, ax = plt.subplots(1, 2, figsize=(9, 3.7))
-    healthy = ["control", "final_s42", "final_s1", "final_s7", "dueling", "wide",
-               "desc_dinov2", "desc_dinov2_none", "prior_layercam", "single_dqn"]
-    fr = [1 - m(T, k, "corloc") for k in healthy if k in T]
-    ex = [m(T, k, "exh") for k in healthy if k in T]
+    """Figure 4: (a) failure rate vs. exhaustion rate, (b) exhaustion under the seven reward
+    interventions (mean and std over three seeds; dashed = control mean)."""
+    fig, ax = plt.subplots(1, 2, figsize=(9.5, 3.7))
+    pts = [("VGG, no prior", SEEDS["vgg_none"]), ("VGG, DINO", SEEDS["vgg_dino"]),
+           ("DINOv2, no prior", SEEDS["dv2_none"]), ("DINOv2, DINO", SEEDS["dv2_dino"]),
+           ("DINOv2, Grad-CAM", ["dinov2_gradcam"]), ("VGG, single DQN", ["single_dqn"]),
+           ("DINOv2, single DQN", ["dinov2_singleq"])]
+    nohist = [("VGG, no history", ["no_history"]), ("DINOv2, no history", ["dinov2_nohist"])]
+    for group, marker, face in ((pts, "o", BLUE), (nohist, "o", "white")):
+        fr = [1 - ms(T, k, "corloc")[0] for _, k in group]
+        ex = [ms(T, k, "exh")[0] for _, k in group]
+        ax[0].scatter(fr, ex, s=50, marker=marker, c=face, edgecolor=BLUE, linewidth=1, zorder=3)
     ax[0].plot([0, .5], [0, .5], "--", c="black", lw=1, label="exhaustion = failure rate")
-    ax[0].scatter(fr, ex, s=55, c=BLUE, edgecolor="black", linewidth=0.5, zorder=3)
-    ax[0].set_xlabel("failure rate  (1 $-$ CorLoc)"); ax[0].set_ylabel("budget-exhaustion rate")
+    ax[0].set_xlabel("failure rate (1 $-$ CorLoc)"); ax[0].set_ylabel("budget-exhaustion rate")
     ax[0].legend(fontsize=8, frameon=False)
-    ax[0].set_title("(a) The trigger fires iff the agent succeeds")
+    ax[0].set_title("(a) Exhaustion vs. failure rate\n(open = no action history)")
 
-    iv = ["control", "step\n$-0.05$", "step\n$-0.2$", "$\\gamma{=}.99$",
-          "$\\eta{=}10$", "PBRS", "expiry\nfail", "aux\nhead"]
-    exv = [0.116, 0.310, 0.236, 0.470, 0.348, 0.429, 0.272, 0.445]
-    cols = [GREEN] + [RED] * 7
-    ax[1].bar(iv, exv, color=cols, edgecolor="black", linewidth=0.5)
-    ax[1].axhline(0.116, ls="--", c="black", lw=1)
-    ax[1].set_ylabel("budget-exhaustion rate"); ax[1].tick_params(axis="x", labelsize=7)
-    ax[1].set_title("(b) Six reward interventions. None helped.\nFour made it worse.")
+    labs = ["control"] + [lab for _, lab in INTERVENTIONS]
+    keys = [SEEDS["control"]] + [iv_tags(n) for n, _ in INTERVENTIONS]
+    mu = [ms(T, k, "exh")[0] for k in keys]
+    sd = [ms(T, k, "exh")[1] for k in keys]
+    ctrl = mu[0]
+    cols = [GREY] + [GREEN if x < ctrl else ORANGE for x in mu[1:]]
+    ax[1].bar(labs, mu, yerr=sd, capsize=3, color=cols, edgecolor="black", linewidth=0.5)
+    ax[1].axhline(ctrl, ls="--", c="black", lw=1)
+    ax[1].set_ylabel("budget-exhaustion rate"); ax[1].tick_params(axis="x", labelsize=7, rotation=30)
+    ax[1].set_title("(b) Reward interventions, matched protocol\n(mean $\\pm$ std, 3 seeds)")
     fig.tight_layout(); save(fig, out, "fig_trigger")
 
 
@@ -184,7 +232,7 @@ def fig_calibration(results, out):
     ys = [io[idx == i].mean() for i in range(8) if (idx == i).sum() > 5]
     ax.plot(xs, ys, "o-", c=BLUE, lw=1.5)
     ax.set_xlabel("trigger Q-value (confidence)"); ax.set_ylabel("realised IoU")
-    ax.set_title(f"Trigger calibration\nSpearman $\\rho={spearmanr(cs,io).correlation:+.3f}$")
+    ax.set_title(f"Trigger confidence vs. realised IoU\nSpearman $\\rho={spearmanr(cs,io).correlation:+.3f}$")
     fig.tight_layout(); save(fig, out, "fig_calibration")
 
 
@@ -192,7 +240,7 @@ def fig_training(T, out):
     fig, ax = plt.subplots(1, 2, figsize=(9, 3.4))
     for tag, lab, c in [("desc_dinov2", "DINOv2 desc", BLUE),
                         ("control", "VGG desc", GREEN),
-                        ("prior_none", "VGG, no prior", GREY)]:
+                        ("desc_vgg_none", "VGG, no prior", GREY)]:
         h = T.get(tag, {}).get("hist", [])
         if not h:
             continue
@@ -251,6 +299,24 @@ def tab_generic(T, out, fname, rows, header):
     logger.info("wrote %s", fname)
 
 
+def tab_seedmean(T, out, fname, rows, header):
+    """Like tab_generic, but each row averages the seeds present (mean over 1-3 runs)."""
+    lines = ["\\begin{tabular}{l" + "c" * (len(header) - 1) + "}", "\\toprule",
+             " & ".join(header) + " \\\\", "\\midrule"]
+    for label, keys in rows:
+        if keys is None:
+            lines.append("\\midrule"); continue
+        mi, sd, n = ms(T, keys)
+        if n == 0:
+            continue
+        mis = f"{mi:.3f} $\\pm$ {sd:.3f}" if n > 1 else f"{mi:.3f}"
+        lines.append(f"{label} & {n} & {mis} & {ms(T, keys, 'corloc')[0]:.3f} & "
+                     f"{ms(T, keys, 'exh')[0]:.3f} & {ms(T, keys, 'ppv')[0]:.3f} \\\\")
+    lines += ["\\bottomrule", "\\end{tabular}"]
+    open(f"{out}/{fname}", "w").write("\n".join(lines))
+    logger.info("wrote %s", fname)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--results", default="./results/results_final")
@@ -270,36 +336,47 @@ def main():
 
     logger.info("tables:")
     tab_headline(a.results, a.out)
-    hdr = ["Config", "mIoU", "CorLoc", "Exh.", "PPV"]
-    tab_generic(T, a.out, "tab_models.tex", [
-        ("VGG-16, no prior", "prior_none"), ("VGG-16, DINO prior", "final_s42"),
-        ("DINOv2, no prior", "desc_dinov2_none"), ("DINOv2, DINO prior", "desc_dinov2"),
+    hdr = ["Config", "Seeds", "mIoU", "CorLoc", "Exh.", "PPV"]
+    tab_seedmean(T, a.out, "tab_models.tex", [
+        ("VGG-16, no prior", SEEDS["vgg_none"]), ("VGG-16, DINO prior", SEEDS["vgg_dino"]),
+        ("DINOv2, no prior", SEEDS["dv2_none"]), ("DINOv2, DINO prior", SEEDS["dv2_dino"]),
     ], hdr)
-    tab_generic(T, a.out, "tab_priors.tex", [
-        ("None", "prior_none"), ("Grad-CAM", "prior_gradcam"),
-        ("LayerCAM", "prior_layercam"), ("DINO", "final_s42"),
+    tab_seedmean(T, a.out, "tab_priors.tex", [
+        ("None", SEEDS["vgg_none"]), ("Grad-CAM", ["prior_gradcam"]),
+        ("LayerCAM", ["prior_layercam"]), ("DINO", SEEDS["vgg_dino"]), (None, None),
+        ("DINOv2, no prior", SEEDS["dv2_none"]), ("DINOv2, same-pass prior", SEEDS["dv2_self"]),
+        ("DINOv2, DINO prior", SEEDS["dv2_dino"]), ("DINOv2, Grad-CAM", ["dinov2_gradcam"]),
     ], hdr)
-    tab_generic(T, a.out, "tab_ablation.tex", [
-        ("Full (VGG)", "final_s42"), ("VGG, no history", "no_history"),
-        ("VGG, single-DQN", "single_dqn"), (None, None),
-        ("Full (DINOv2)", "desc_dinov2"), ("DINOv2, no history", "dinov2_nohist"),
-        ("DINOv2, single-DQN", "dinov2_singleq"),
+    tab_seedmean(T, a.out, "tab_ablation.tex", [
+        ("Full (VGG)", SEEDS["vgg_dino"]), ("VGG, no history", ["no_history"]),
+        ("VGG, single-DQN", ["single_dqn"]), (None, None),
+        ("Full (DINOv2)", SEEDS["dv2_dino"]), ("DINOv2, no history", ["dinov2_nohist"]),
+        ("DINOv2, single-DQN", ["dinov2_singleq"]),
     ], hdr)
-    tab_generic(T, a.out, "tab_scale.tex", [
-        ("5 classes (DINOv2)", "desc_dinov2"), ("20 classes, DINO prior", "voc20_dino"),
-        ("20 classes, no prior", "voc20_none"),
+    tab_seedmean(T, a.out, "tab_trigger.tex",
+                 [("Control", SEEDS["control"])] +
+                 [(lab, iv_tags(n)) for n, lab in INTERVENTIONS], hdr)
+    tab_seedmean(T, a.out, "tab_scale.tex", [
+        ("5 classes (DINOv2)", SEEDS["dv2_dino"]), ("20 classes, DINO prior", ["voc20_dino"]),
+        ("20 classes, no prior", ["voc20_none"]),
     ], hdr)
 
-    # seed table
+    # per-seed mIoU for every seeded configuration
     def seedrow(name, keys):
         v = [m(T, k) for k in keys if k in T]
-        return f"{name} & {', '.join(f'{x:.4f}' for x in v)} & {np.mean(v):.4f} & {np.std(v,ddof=1):.4f} \\\\"
+        if not v:
+            return None
+        sd = f"{np.std(v, ddof=1):.4f}" if len(v) > 1 else "--"
+        return f"{name} & {', '.join(f'{x:.4f}' for x in v)} & {np.mean(v):.4f} & {sd} \\\\"
+    rows = [seedrow("VGG-16, no prior", SEEDS["vgg_none"]),
+            seedrow("VGG-16, DINO prior", SEEDS["vgg_dino"]),
+            seedrow("DINOv2, no prior", SEEDS["dv2_none"]),
+            seedrow("DINOv2, DINO prior", SEEDS["dv2_dino"]),
+            seedrow("DINOv2, same-pass prior", SEEDS["dv2_self"]),
+            seedrow("Plain-head control", SEEDS["control"])]
     st = ["\\begin{tabular}{lccc}", "\\toprule",
-          "Configuration & Seeds (mIoU) & Mean & Std \\\\", "\\midrule",
-          seedrow("VGG + DINO prior", ["final_s1", "final_s42", "final_s7"]),
-          seedrow("DINOv2 + DINO prior", ["desc_dinov2", "desc_dinov2_s1", "desc_dinov2_s7"]),
-          seedrow("DINOv2 + no prior", ["desc_dinov2_none", "desc_dinov2_none_s1", "desc_dinov2_none_s7"]),
-          "\\bottomrule", "\\end{tabular}"]
+          "Configuration & Seeds (mIoU) & Mean & Std \\\\", "\\midrule"]
+    st += [r for r in rows if r] + ["\\bottomrule", "\\end{tabular}"]
     open(f"{a.out}/tab_seeds.tex", "w").write("\n".join(st))
     logger.info("wrote tab_seeds.tex")
 

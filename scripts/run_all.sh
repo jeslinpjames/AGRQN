@@ -1,7 +1,9 @@
 #!/bin/bash
 # ==============================================================================
-# run_all.sh -- launch the accuracy/incentive-track sweep across several GPUs,
-# in parallel. Run from the repository root, inside tmux/screen if launching many
+# run_all.sh -- launch a single-seed sweep of plain-head configs across several GPUs,
+# in parallel. This is the development sweep (architecture variants and reward
+# interventions at seed 42). The three-seed runs reported in the paper are in
+# run_seeds.sh. Run from the repository root, inside tmux/screen if launching many
 # long jobs: each job is started with nohup so it survives a detached session.
 #
 #   bash scripts/run_all.sh                 # run everything
@@ -18,8 +20,7 @@ OUT="./results/results_final"
 # cluster is shared.
 GPUS=(0 1 2 3)
 
-# Ordered by importance: the first four configs answer the paper's main question about
-# accuracy-track interventions; the rest are supporting evidence.
+# Seed-42 runs, in launch order.
 ALL_CONFIGS=(
   control        # 1. the baseline
   hires          # 2. finer ROI grid, targets small objects
