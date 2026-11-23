@@ -28,3 +28,9 @@ VOC2012_train_val/
 logs/
 paper_assets/
 report/
+
+# checkpoints and caches live here (see README)
+checkpoints/
+
+# per-state Q-value captures are large; keep only the summaries
+results/results_qcalib/*.npz

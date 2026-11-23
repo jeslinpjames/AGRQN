@@ -1,86 +1,116 @@
-# AG-RQN: Redundant Saliency Priors and Calibrated Stopping in Active Object Localization
+# AG-RQN: Saliency Priors, Descriptor Strength, and Selective Stopping in Active Object Localization
 
-Code and results for the paper *"Redundant Saliency Priors and Calibrated Stopping in
-Active Object Localization"* (submitted to TMLR).
+Code, configurations and evaluation records for the paper
 
-AG-RQN is a Double-DQN agent for active object localization on PASCAL VOC2012. It starts
-with a bounding box covering the whole image and, at each step, chooses one of 9 actions
-(4 translations, 2 scalings, 2 aspect-ratio changes, and a terminal "trigger" that stops the
-search) to deform the box toward the target object. The paper makes two main findings:
-(1) once the region descriptor is strong (e.g. a self-supervised ViT), an auxiliary
-class-agnostic saliency prior becomes largely redundant, and (2) the agent's failure to
-trigger before its step budget runs out is not a stopping bug but a calibrated abstention
-signal — exhaustion rate closely tracks the localization failure rate across every
-architecture we tried.
+> Jeslin P. James and Shailesh S.
+> **Saliency Priors, Descriptor Strength, and Selective Stopping in Active Object Localization.**
+> *Transactions on Machine Learning Research*, 2026.
+> [OpenReview](https://openreview.net/forum?id=k78lV4wIvR)
+
+AG-RQN is a single class-agnostic Double-DQN policy for active object localization on
+PASCAL VOC 2012, paired with a separate 5-way image classifier. Starting from a box over the
+whole image, the agent applies one of nine actions per step (four translations, two scalings,
+two aspect-ratio changes, and a terminal *trigger*) until it stops or a 20-step budget runs
+out. The policy fuses a region descriptor (VGG-16 or DINOv2), a class-agnostic attention
+prior, and a GRU over recent actions.
+
+The paper tests two design choices that are usually adopted without ablation:
+
+1. **The saliency prior.** A Grad-CAM prior gives no measurable gain over a retrained no-prior
+   control; LayerCAM adds +0.034 mIoU and a DINO self-attention prior +0.043. With a DINOv2
+   descriptor the DINO prior's benefit falls by 56% (+0.043 to +0.019, three seeds per
+   configuration). A prior taken from the descriptor's own DINOv2 forward pass recovers almost
+   the same gain, so independence from the descriptor is not what makes a prior useful.
+   The best configuration reaches 0.634 ± 0.004 mIoU / 0.803 ± 0.016 CorLoc.
+2. **The stop decision.** Stopping is discriminative of success: 90% of voluntarily stopped
+   episodes reach IoU ≥ 0.5 against 25% of budget-exhausted ones, so budget exhaustion acts as
+   a learned rejection signal. Read as a probability, the trigger Q-value is overconfident
+   (ECE 0.09–0.19): the signal is discriminative, not calibrated. Seven reward-level
+   interventions, each retrained with three seeds, trace a coverage–precision trade-off; a
+   per-step cost of −0.2 lowers exhaustion from 0.153 to 0.087 without losing precision.
 
 ## Repository layout
 
 ```
-agrqn/            importable package: shared data loading, splits, backbones, the
-                  Q-network, reward functions, and the evaluation/rollout loop
-scripts/          entry-point scripts (training, evaluation, figure/table generation)
-                  and .sh runners for the paper's experiment sweeps
-results/          result JSONs, records, and calibration reports/figures backing the
-                  paper's tables (data only, no code)
+agrqn/            importable package: data loading, the train/val/test split, frozen
+                  backbones, the feature cache, the Q-network, rewards, and the
+                  evaluation/rollout loop (agrqn/core.py)
+scripts/          command-line entry points: caching, training, evaluation, analysis,
+                  figures and tables, and the .sh runners for the experiment sweeps
+results/          result JSONs and per-episode evaluation records behind the paper's
+                  tables and figures (data only, no code)
 ```
 
-We use a single Python package plus a `scripts/` folder rather than a deeper module tree
-because the codebase is small (~2,000 lines) and every script is a standalone CLI entry
-point over the shared library in `agrqn/core.py`. We did not introduce a separate
-`configs/` directory: the paper's experiment configurations are named presets in a Python
-dictionary (`agrqn/core.py: CONFIGS`, selected via `--config`) rather than external config
-files, and extracting them into YAML would touch experiment-defining code that we were
-asked to leave unmodified for this cleanup.
+Experiment configurations are named presets in `agrqn/core.py: CONFIGS`, selected with
+`--config`. Each preset lists only what differs from `DEFAULTS` in the same file.
 
 ## Installation
 
 ```bash
-git clone <this repository>
-cd agrqn
+git clone https://github.com/jeslinpjames/AGRQN.git
+cd AGRQN
 python -m venv venv && source venv/bin/activate
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121  # or your CUDA version
 pip install -r requirements.txt
 pip install -e .        # makes `agrqn` importable from scripts/
 ```
 
-`scripts/setup_env.sh` automates the steps above and also pre-downloads the frozen DINO
-ViT-S/16 backbone used by every config.
-
-DINO (`facebookresearch/dino`) and DINOv2 (`facebookresearch/dinov2`) backbones are pulled
-via `torch.hub` on first use and require outbound network access the first time each script
-runs.
+`scripts/setup_env.sh` automates these steps and pre-downloads the frozen DINO ViT-S/16
+backbone. DINO (`facebookresearch/dino`) and DINOv2 (`facebookresearch/dinov2`) are loaded
+through `torch.hub`, which needs network access the first time.
 
 ## Data
 
-Download PASCAL VOC2012 from the official mirror:
-<http://host.robots.ox.ac.uk/pascal/VOC/voc2012/>
+Download PASCAL VOC 2012 from <http://host.robots.ox.ac.uk/pascal/VOC/voc2012/> and extract it
+so that `<VOC>/JPEGImages`, `<VOC>/Annotations` and `<VOC>/ImageSets/Main` exist. Every script
+takes this path with `--voc`; we recommend `./data/VOC2012_train_val` (ignored by git).
 
-Extract it so that `<VOC_ROOT>/JPEGImages`, `<VOC_ROOT>/Annotations`, and
-`<VOC_ROOT>/ImageSets/Main` exist. Every script below takes this path via `--voc`; we
-recommend placing it at `./data/VOC2012_train_val` (already excluded via `.gitignore`) and
-either passing `--voc ./data/VOC2012_train_val` explicitly or exporting `VOC=...` for the
-`.sh` runners.
+Trained weights (`*.pth`) are not included because of their size; the commands below
+reproduce them.
 
-Trained model weights (`*.pth`) are not included in this repository due to size; every
-command below reproduces them from scratch.
+## Reproducing the experiments
 
-## Reproducing the paper's experiments
-
-Run these in order from the repository root. `<VOC>` is your VOC2012 path.
+Run from the repository root. `<VOC>` is your VOC 2012 path.
 
 ```bash
-# 1. Cache frozen backbone features (VGG-16 conv maps + DINO attention), once.
-python scripts/precache.py --voc <VOC> --weights vgg16_5class.pth \
-    --cache ./checkpoints/feat_cache --gpu 0
-
-# 1b. Optional: only needed for the prior_gradcam / prior_layercam configs.
-python scripts/precache_cams.py --voc <VOC> --weights vgg16_5class.pth \
-    --cache ./checkpoints/feat_cache --gpu 0
-
-# 2. Train the frozen classifier(s) the agent scores detections against.
+# 1. Train the frozen 5-way classifier.
 python scripts/train_classifier.py --voc <VOC> --classes 5 \
     --out ./checkpoints/vgg16_5class.pth --gpu 0 --epochs 20
-# For the 20-class scaling experiment (see Compute note below):
+
+# 2. Cache frozen features once per descriptor.
+#    VGG-16 descriptor + DINO prior:
+python scripts/precache.py --voc <VOC> --weights ./checkpoints/vgg16_5class.pth \
+    --cache ./checkpoints/feat_cache --gpu 0
+#    DINOv2 descriptor + DINO prior:
+python scripts/precache.py --voc <VOC> --weights ./checkpoints/vgg16_5class.pth \
+    --desc dinov2 --cache ./checkpoints/feat_cache_dinov2 --gpu 0
+#    Grad-CAM / LayerCAM priors (prior study, and Grad-CAM with the DINOv2 descriptor):
+for C in feat_cache feat_cache_dinov2; do
+  python scripts/precache_cams.py --voc <VOC> --weights ./checkpoints/vgg16_5class.pth \
+      --cache ./checkpoints/$C --gpu 0
+done
+#    Same-backbone prior (attention from the descriptor's own DINOv2 pass):
+python scripts/make_dinov2_attn_cache.py --voc <VOC> --gpu 0 \
+    --src ./checkpoints/feat_cache_dinov2 --dst ./checkpoints/feat_cache_dinov2_selfattn
+
+# 3. Train a policy (one config, one seed). Every run is 120 epochs, no early stopping.
+python scripts/train_agrqn.py --config desc_dinov2 --voc <VOC> \
+    --weights ./checkpoints/vgg16_5class.pth --cache ./checkpoints/feat_cache_dinov2 \
+    --out ./results/results_final --gpu 0 --seed 42
+
+# 4. The three-seed runs of the paper (main configs, same-backbone prior, reward study):
+VOC=<VOC> GPUS="0 1 2 3" bash scripts/run_seeds.sh            # or: ... run_seeds.sh main
+#    Single-seed runs (prior study and ablations), same command as step 3 with the
+#    matching cache:
+for c in prior_gradcam prior_layercam no_history single_dqn; do
+  python scripts/train_agrqn.py --config $c --voc <VOC> --weights ./checkpoints/vgg16_5class.pth \
+      --cache ./checkpoints/feat_cache --out ./results/results_final --gpu 0
+done
+for c in dinov2_nohist dinov2_singleq dinov2_gradcam; do
+  python scripts/train_agrqn.py --config $c --voc <VOC> --weights ./checkpoints/vgg16_5class.pth \
+      --cache ./checkpoints/feat_cache_dinov2 --out ./results/results_final --gpu 0
+done
+#    The 20-class scale check: 20-class classifiers and cache first, then the two runs.
 python scripts/train_classifier.py --voc <VOC> --classes 20 \
     --out ./checkpoints/vgg16_20class.pth --gpu 0 --epochs 20
 python scripts/train_clf_dinov2.py --voc <VOC> --classes 20 \
@@ -88,59 +118,71 @@ python scripts/train_clf_dinov2.py --voc <VOC> --classes 20 \
 python scripts/precache.py --voc <VOC> --desc dinov2 --classifier dinov2 \
     --clf-weights ./checkpoints/clf_dinov2_20.pth --classes 20 \
     --cache ./checkpoints/feat_cache_20 --gpu 0
-
-# 3. Train the localization policy. A single config:
-python scripts/train_agrqn.py --config control --voc <VOC> \
-    --weights ./checkpoints/vgg16_5class.pth --cache ./checkpoints/feat_cache \
-    --out ./results/results_final --gpu 0
-# The full 5-class sweep (accuracy track, incentive track, prior study, ablations):
-bash scripts/run_all.sh
-# The two 20-class scaling runs:
 VOC=<VOC> GPU=0 bash scripts/run_dino.sh
 VOC=<VOC> GPU=0 bash scripts/run_none.sh
 
-# 4. Evaluate / re-evaluate saved checkpoints (pure inference, no retraining):
-python scripts/reevaluate_checkpoints.py --voc <VOC> --out ./results/results_final --gpu 0
-
-# 5. Calibration analysis (CPU only, no GPU needed): the statistical tests behind the
-#    "exhaustion rate == failure rate" claim. Scored on last_iou (the terminal-box
-#    convention used throughout the paper).
+# 5. Analysis (inference or CPU only; no retraining):
+python scripts/rescore_trueclass.py --voc <VOC> --gpu 0          # true- vs predicted-class
 python scripts/analyze_calibration.py \
     --records ./results/results_final/desc_dinov2_records.json.gz \
-    --iou-key last_iou \
-    --out ./results/results_calib/headline_lastbox
+    --iou-key last_iou --out ./results/results_calib/headline_lastbox
+python scripts/calib_qvalues.py --voc <VOC> --gpu 0              # trigger Q-values
+python scripts/calib_analysis.py --dir ./results/results_qcalib
+python scripts/measure_timing.py --voc <VOC> --gpu 0 --rounds 3  # Appendix D
+
+# 6. Figures and LaTeX tables from the saved records:
+python scripts/make_paper_figures.py --results ./results/results_final --out ./paper_assets
 ```
 
-`scripts/collect_results.py` builds a cross-run summary table and sweep-level figures from
-everything under a results directory; `scripts/make_paper_figures.py`,
-`make_action_fig.py`, and `make_trajectory_fig.py` regenerate the paper's individual
-figures and LaTeX table fragments from the same saved records.
+## Paper items and how they are produced
 
-## Compute and reproducibility notes
-
-- All experiments were run on a single NVIDIA GPU on a shared cluster (one GPU per job;
-  several accuracy/incentive-track jobs were run concurrently on different GPUs via
-  `run_all.sh`).
-- Each 5-class configuration is trained for a fixed 120 epochs with no early stopping
-  (`--early-stop` is opt-in and off by default; see `train_agrqn.py`).
-- The two 20-class runs (`voc20_dino`, `voc20_none`) took 26.8 h and 47.7 h wall-clock,
-  respectively.
-- Seed variation, measured over three seeds on the main 5-class configuration: mIoU
-  0.5776 / 0.5720 / 0.5716.
-- All other reported configurations are single-seed.
-
-## Mapping paper items to scripts
-
-| Paper item | How it's produced |
+| Paper item | Configs / scripts |
 |---|---|
-| Main results (accuracy-track and incentive-track configs) | `scripts/run_all.sh` → `scripts/train_agrqn.py`, summarized by `scripts/collect_results.py` |
-| Prior-redundancy study (none / Grad-CAM / LayerCAM / DINO) | `--config prior_none / prior_gradcam / prior_layercam / prior_dino` in `train_agrqn.py`; figure via `scripts/make_paper_figures.py:fig_prior_arc` |
-| Descriptor-swap redundancy prediction (VGG vs. DINOv2 descriptor) | `--config desc_dinov2 / desc_dinov2_none / dinov2_gradcam / desc_vgg_none` |
-| Retraining ablations (no history, single-DQN) | `--config no_history / single_dqn / dinov2_nohist / dinov2_singleq` |
-| Reward/incentive interventions (negative-result controls) | `--config expiry_fail / steppen02 / eta10 / pbrs`; figure via `fig_trigger` in `scripts/make_paper_figures.py` |
-| 20-class scaling experiment | `scripts/run_dino.sh`, `scripts/run_none.sh` → `results/results_20class/` |
-| Calibration defense of "exhaustion == failure rate" (Tests A-E) | `scripts/analyze_calibration.py` → `results/results_calib/` |
-| Action-distribution / coarse-to-fine figure | `scripts/make_action_fig.py` |
-| Episode trajectory figure | `scripts/make_trajectory_fig.py` |
-| Per-episode timing table | `scripts/measure_timing.py` |
-| Qualitative box-overlay figure | `scripts/make_box_fig.py` (reads `results/results_final/qual_boxes.json`) |
+| Table 1 (per-class results) | `desc_dinov2`; `make_paper_figures.py` (`tab_headline`) |
+| Table 2 (four main configurations, 3 seeds) | `desc_vgg_none`, `duel_wide` (tags `final_s*`), `desc_dinov2_none`, `desc_dinov2`; `run_seeds.sh main` |
+| Table 3 (true- vs predicted-class scoring) | `rescore_trueclass.py` |
+| Table 4 (retraining ablations) | `no_history`, `single_dqn`, `dinov2_nohist`, `dinov2_singleq`, `dinov2_gradcam` |
+| Table 5, Figure 3 (prior study, attenuation) | `prior_gradcam`, `prior_layercam` + the main configs; `make_paper_figures.py` (`fig_prior_arc`) |
+| Table 6 (same-backbone prior) | `make_dinov2_attn_cache.py`, `desc_dinov2_selfattn`; `run_seeds.sh selfatt` |
+| Table 7, Figure 4 (reward interventions) | `control`, `steppen005`, `steppen02`, `gamma99`, `eta10`, `pbrs`, `expiry_fail`, `aux_head`; `run_seeds.sh reward`; `make_paper_figures.py` (`fig_trigger`) |
+| Table 9 (discrimination tests of the stop decision) | `analyze_calibration.py` → `results/results_calib/` |
+| Appendix B (actions, trajectories, boxes) | `make_action_fig.py`, `make_trajectory_fig.py`, `make_box_fig.py` |
+| Appendix C (inference-time step budget) | evaluate a saved checkpoint with a different `MAX_STEPS` in `agrqn/core.py` |
+| Appendix D (computational cost) | `measure_timing.py` → `results/results_timing/` |
+| Appendix E (calibration of the trigger Q-value) | `calib_qvalues.py`, `calib_analysis.py` → `results/results_qcalib/` |
+| Appendix F (error analysis) | `make_paper_figures.py` (`fig_failures`, `fig_size`) |
+| Appendix G (twenty-class scale check) | `run_dino.sh`, `run_none.sh` → `results/results_20class/` |
+
+Result tags in `results/results_final/` follow `<config>` for seed 42 and `<config>_s1`,
+`<config>_s7` for seeds 1 and 7 (the reward interventions use `iv_<config>`). A trailing `r`
+(for example `iv_pbrs_s1r`) marks a full rerun of a seed whose first run was interrupted
+before finishing; only the completed rerun is included.
+
+Other result folders: `results_trueclass/` (Table 3), `results_calib/` (Table 9),
+`results_qcalib/` (Appendix E: one JSON per policy plus `summary.txt`), `results_timing/`
+(Appendix D), and `results_20class/` (Appendix G).
+
+## Compute notes
+
+- Every run used one NVIDIA GPU on a shared cluster; several runs shared a GPU concurrently.
+- Each 5-class configuration trains for a fixed 120 epochs with no early stopping
+  (`--early-stop` is available but off by default). Checkpoints are selected on a 3-epoch
+  moving average of validation mIoU.
+- The two 20-class runs took 26.8 h and 47.7 h of wall-clock time.
+- Timing in the paper (Appendix D) was measured on an idle NVIDIA A100-SXM4-80GB, batch size 1.
+
+## Citation
+
+```bibtex
+@article{james2026saliency,
+  title   = {Saliency Priors, Descriptor Strength, and Selective Stopping in Active Object Localization},
+  author  = {James, Jeslin P. and S., Shailesh},
+  journal = {Transactions on Machine Learning Research},
+  year    = {2026},
+  url     = {https://openreview.net/forum?id=k78lV4wIvR}
+}
+```
+
+## License
+
+MIT. See [LICENSE](LICENSE).

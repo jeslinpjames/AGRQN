@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "agrqn"
 version = "1.0.0"
-description = "Active Object Localization with redundant saliency priors and calibrated stopping"
+description = "AG-RQN: saliency priors, descriptor strength, and selective stopping in active object localization (TMLR 2026)"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
