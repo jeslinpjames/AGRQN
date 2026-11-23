@@ -6,17 +6,16 @@ Used by both ``scripts/precache.py`` and ``scripts/train_agrqn.py``.
 
 Design note on CONFIGS
 -----------------------
-Across every architecture variant we trained, the budget-exhaustion rate tracks the
-localization failure rate almost exactly:
-
-    exhaustion_rate  ~=  1 - Acc@0.5   (to within ~0.01, for a converged policy)
-
-In other words, the agent triggers if and only if it succeeds: exhaustion is a calibrated
-abstention signal, not a stopping defect. It can only be reduced by making the agent more
-accurate (the "accuracy" track below), or by forcing it to commit to boxes it already
-suspects are bad, which trades trigger precision for coverage (the "incentive" track,
-included as a controlled negative result). See the paper for the full argument and the
-`analyze_calibration.py` script for the statistical tests that support it.
+The configs below are grouped by the question they answer in the paper. Two findings frame
+them. First, the agent's decision to stop is discriminative of success: episodes that end
+with a voluntary trigger succeed far more often than episodes that exhaust the step budget,
+so budget exhaustion works as a learned rejection signal. It is discriminative, not
+calibrated: read as a probability, the trigger Q-value is overconfident (see
+`scripts/calib_qvalues.py` and `scripts/calib_analysis.py`). Second, the reward-level
+interventions of the "incentive" track, retrained with three seeds under the control's
+exact protocol, trace a coverage-precision trade-off; a per-step cost of -0.2 lowers
+exhaustion without losing precision. `scripts/analyze_calibration.py` runs the
+discrimination tests (permutation test and Brier resolution) on saved episode records.
 """
 import logging
 import math
@@ -112,7 +111,7 @@ CONFIGS = {
     "hires": dict(track="accuracy", feat="14x14"),
     "combo_acc": dict(track="accuracy", dueling=True, hidden=1024, feat="14x14"),
 
-    # ---- incentive track (negative-result controls) ----
+    # ---- incentive track: reward-level interventions (plain head, same protocol) ----
     "expiry_fail": dict(track="incentive", expiry="fail"),
     "steppen02": dict(track="incentive", step_penalty=0.2),
     "eta10": dict(track="incentive", eta=10.0),
@@ -133,11 +132,11 @@ CONFIGS = {
     # combination of just the two that help.
     "duel_wide": dict(track="accuracy", dueling=True, hidden=1024),
 
-    # ---- prior study on the clean split (paper: prior redundancy result) ----
+    # ---- prior study (paper: Section 4.5, Table 5) ----
     # `prior` selects the attention stream fed to the agent alongside the descriptor:
-    #   dino     : class-agnostic ViT self-attention (the paper's model)
-    #   gradcam  : from the same VGG that supplies the descriptor -- redundant and coarse
-    #   layercam : same classifier, but spatially sharper -- isolates the coarseness half
+    #   dino     : class-agnostic DINO ViT-S/16 self-attention (the paper's model)
+    #   gradcam  : from the same VGG that supplies the descriptor; coarse (7x7)
+    #   layercam : same classifier, spatially sharper, also uses earlier layers
     #   none     : attention stream zeroed at training time (retraining ablation)
     "prior_dino": dict(track="prior", dueling=True, hidden=1024, prior="dino"),
     "prior_gradcam": dict(track="prior", dueling=True, hidden=1024, prior="gradcam"),
@@ -151,11 +150,8 @@ CONFIGS = {
     "no_history": dict(track="ablation", dueling=True, hidden=1024, history=False),
     "single_dqn": dict(track="ablation", dueling=True, hidden=1024, double_q=False),
 
-    # ---- redundancy prediction: swap the descriptor family ----
-    # If the DINO prior is redundant because it shares a family with the descriptor, then
-    # switching the descriptor to DINOv2 should make the prior stop helping, mirroring the
-    # Grad-CAM result above. This is the paper's own diagnosis stated as a falsifiable
-    # prediction.
+    # ---- descriptor swap: VGG-16 -> DINOv2 (paper: Tables 2 and 5) ----
+    # The DINO prior's gain shrinks once the descriptor is DINOv2 (the attenuation result).
     "desc_dinov2": dict(track="prediction", dueling=True, hidden=1024,
                          desc="dinov2", prior="dino"),
     "desc_dinov2_none": dict(track="prediction", dueling=True, hidden=1024,
@@ -163,8 +159,8 @@ CONFIGS = {
 
     # ---- 20-class scaling runs ----
     # DINOv2 descriptor + DINOv2 linear-probe classifier, the strongest architecture found
-    # on the 5-class study. Two runs test whether the prior stays redundant when the task
-    # scales to all 20 VOC classes.
+    # on the 5-class study. Two runs check whether the findings hold when the task scales
+    # to all 20 VOC classes (paper: Appendix G, single seed each).
     "voc20_dino": dict(track="scale", dueling=True, hidden=1024,
                         desc="dinov2", prior="dino"),
     "voc20_none": dict(track="scale", dueling=True, hidden=1024,
@@ -176,16 +172,32 @@ CONFIGS = {
     "dinov2_singleq": dict(track="ablation", dueling=True, hidden=1024,
                             desc="dinov2", prior="dino", double_q=False),
 
-    # ---- redundancy prediction, other direction ----
-    # Grad-CAM is redundant with a VGG descriptor (near-tied). With a DINOv2 descriptor it
-    # is a different network family entirely, so it should no longer be redundant and
-    # should help. Confirming this in both directions supports independence, not just
-    # architecture identity, as the operative variable.
+    # ---- Grad-CAM prior with the DINOv2 descriptor ----
+    # The Grad-CAM map is independent of the DINOv2 descriptor but coarse. It gives no gain
+    # (paper: Section 4.5), so independence alone does not make a prior useful.
     "dinov2_gradcam": dict(track="prediction", dueling=True, hidden=1024,
                             desc="dinov2", prior="gradcam"),
     # Control for the above: same architecture, VGG descriptor, no prior.
     "desc_vgg_none": dict(track="prediction", dueling=True, hidden=1024,
                            desc="vgg", prior="none"),
+
+    # ---- same-backbone prior (paper: Section 4.5, Table 6) ----
+    # Identical to desc_dinov2 except for where the prior map comes from: the [CLS]
+    # self-attention of the SAME DINOv2 forward pass that produces the descriptor, instead of
+    # a separate DINO ViT-S/16. Train it with --cache pointing at the cache built by
+    # scripts/make_dinov2_attn_cache.py. It recovers almost the full gain of the separate
+    # prior, so independence from the descriptor is not what makes a prior useful.
+    "desc_dinov2_selfattn": dict(track="prediction", dueling=True, hidden=1024,
+                                 desc="dinov2", prior="dino"),
+
+    # ---- reward-level interventions missing above (paper: Section 4.6, Table 7) ----
+    # All seven interventions (these three plus expiry_fail, steppen02, eta10, pbrs) use the
+    # plain head of `control` and the same protocol: 120 epochs, no early stopping, seeds
+    # 42 / 1 / 7. `aux_head` adds an IoU head but still stops on argmax(Q); it is not
+    # `aux_stop`, which stops on the IoU head.
+    "steppen005": dict(track="incentive", step_penalty=0.05),
+    "gamma99": dict(track="incentive", gamma=0.99),
+    "aux_head": dict(track="incentive", aux_iou=True, stop_mode="argmax"),
 }
 
 DEFAULTS = dict(eta=3.0, gamma=0.90, shaping="sign", expiry="pass", step_penalty=0.0,
@@ -401,9 +413,9 @@ class Frozen:
 
 # ============================================================================ CAM PRIORS
 class GradCAMGenerator:
-    """Grad-CAM from the last conv block: 7x7 -> blobby. It is also produced by the very
-    classifier whose pooled features form the region descriptor, so the two state streams
-    carry overlapping information -- redundant and coarse."""
+    """Grad-CAM from the last conv layer (conv5_3: a 14x14 grid at 224 px). Weighting whole
+    channels by their pooled gradient gives a diffuse, blob-like map. It comes from the same
+    classifier whose pooled features form the VGG region descriptor."""
 
     def __init__(self, vgg, device):
         self.model, self.device = vgg, device
@@ -431,10 +443,9 @@ class GradCAMGenerator:
 
 
 class LayerCAMGenerator:
-    """LayerCAM fuses several conv stages -> spatially sharper than Grad-CAM, but still from
-    the same classifier. It fixes the coarseness half of the diagnosis while leaving the
-    redundancy half untouched, which is why it recovers only part of the gap that DINO
-    recovers in full."""
+    """LayerCAM fuses several conv stages -> spatially sharper than Grad-CAM, still from the
+    same classifier. It changes more than resolution (it also adds information from earlier
+    layers), so it does not isolate coarseness on its own."""
 
     def __init__(self, vgg, device, layers=(15, 22, 28)):
         self.model, self.device, self.layers = vgg, device, layers
@@ -543,8 +554,8 @@ class Cached:
       none     -> a zero map (the retraining ablation: train without the prior)
 
     At training time `cls` is the episode's true class; at eval time it is the classifier's
-    prediction, so classifier errors corrupt the CAM priors but cannot touch DINO. That
-    asymmetry is part of the paper's argument for an independent prior.
+    prediction, so classifier errors can corrupt the CAM priors but not the class-agnostic
+    DINO map.
     """
 
     def __init__(self, name, cache_dir, feat_key, device, pool, prior="dino", cls=None):
